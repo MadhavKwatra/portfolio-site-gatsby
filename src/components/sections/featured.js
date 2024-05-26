@@ -348,8 +348,9 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Some Things <a href="https://brittanychiang.com/"> Brittany</a> (The original creator of this site) have Built.
       </h2>
+      <p>Will update it later as i don't know GraphQL, also not have these sort of amazing projects.</p>
 
       <StyledProjectsGrid>
         {featuredProjects &&
