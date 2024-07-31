@@ -19,6 +19,10 @@ module.exports = {
       url: 'https://www.linkedin.com/in/madhav-kwatra/',
     },
     {
+      name: 'Leetcode',
+      url: 'https://leetcode.com/u/madhav_kwats/',
+    },
+    {
       name: 'Codepen',
       url: 'https://codepen.io/mad2000',
     },
