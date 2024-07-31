@@ -61,12 +61,12 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Madhav Kwatra.</h2>;
-  const three = <h3 className="big-heading">I build things for the and mobile.</h3>;
+  const three = <h3 className="big-heading">I build things for the web and mobile.</h3>;
   const four = (
     <>
       <p>
-        I’m a software developer specializing in backend (and occasionally frontend) digital
-        experiences. Currently, I’m working at{' '}
+        I’m a software developer specializing in backend and frontend digital experiences.
+        Currently, I’m working at{' '}
         <a href="https://www.geminisolutions.com" target="_blank" rel="noreferrer">
           Gemini Solutions
         </a>

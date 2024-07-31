@@ -144,36 +144,14 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Madhav and (Will Change this) Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Cum nesciunt veritatis excepturi? Officiis nemo
-              quibusdam nobis quidem, provident veritatis illum! Neque sint similique corrupti
-              incidunt cupiditate architecto saepe nemo commodi eaque impedit facere, nihil ratione
-              iure qui pariatur ipsum accusantium.
-              {/* I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS! */}
+              Hello! My name is Madhav . I am a Computer Science Graduate with almost 2 years of
+              software engineering experience. I have done my Bachelors in Computer Applications
+              from Panjab University, Chandigarh, India. Also i am doing Masters for the same while
+              working full time. I enjoy creating things that live on the internet. My interest in
+              web development started back in 2014 during my class 9th subject called
+              &quot;Information Technology&quot; where i learnt about some basic HTML &amp; CSS!
             </p>
-
-            {/* <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
-            </p> */}
-            <p>Why i dont have much to write here 🤔</p>
-            {/* <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
-            </p> */}
+            {/* <p>Why i dont have much to write here 🤔</p> */}
 
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>

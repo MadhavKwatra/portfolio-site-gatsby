@@ -122,6 +122,11 @@ const Footer = () => {
           )}
         </a>
       </StyledCredit>
+      <StyledCredit>
+        <a href="https://github.com/MadhavKwatra/portfolio-site-gatsby">
+          <div>Then Forked &amp; Changed by Madhav Kwatra</div>
+        </a>
+      </StyledCredit>
     </StyledFooter>
   );
 };
