@@ -1,6 +1,6 @@
 ---
 date: '2022-11-21'
-title: 'Technical Trainee'
+title: 'Full Stack Engineer'
 company: 'Gemini Solutions'
 location: 'Gurugram, India'
 range: 'Nov 2022 - Present'
@@ -13,4 +13,4 @@ url: 'https://www.geminisolutions.com/'
 - Implemented APIs for Analytics, Resignation Flow, Integrations (with other Internal Projects), Filters in Different Areas and More.
 - Released Backend and Frontend in Sprints Releases
 - Created feedback flow for onboarded candidates
-- Worked on adding the Requirements from the HR Teamss
+- Worked on adding the Requirements from the HR Teams
