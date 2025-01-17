@@ -66,10 +66,10 @@ const Hero = () => {
     <>
       <p>
         I’m a software developer specializing in backend and frontend digital experiences.
-        Currently, I’m working at{' '}
+        {/* Currently, I’m working at{' '}
         <a href="https://www.geminisolutions.com" target="_blank" rel="noreferrer">
           Gemini Solutions
-        </a>
+        </a> */}
         .
       </p>
     </>

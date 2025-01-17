@@ -3,7 +3,7 @@ date: '2022-11-21'
 title: 'Full Stack Engineer'
 company: 'Gemini Solutions'
 location: 'Gurugram, India'
-range: 'Nov 2022 - Present'
+range: 'Nov 2022 - Sep 2024'
 url: 'https://www.geminisolutions.com/'
 ---
 
