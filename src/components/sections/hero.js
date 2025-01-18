@@ -69,8 +69,7 @@ const Hero = () => {
         {/* Currently, I’m working at{' '}
         <a href="https://www.geminisolutions.com" target="_blank" rel="noreferrer">
           Gemini Solutions
-        </a> */}
-        .
+        </a> .*/}
       </p>
     </>
   );
