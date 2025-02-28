@@ -126,14 +126,17 @@ const About = () => {
   }, []);
 
   const skills = [
-    'JavaScript (ES6+)',
+    'JavaScript',
     'TypeScript',
     'Angular',
-    'React',
+    'React/Next.js',
     'MongoDB',
     'Node.js',
     'React Native',
     'AWS',
+    'PHP',
+    'SQL',
+    'Git',
   ];
 
   return (
@@ -145,10 +148,10 @@ const About = () => {
           <div>
             <p>
               Hello! My name is Madhav . I am a Computer Science Graduate with almost 2 years of
-              software engineering experience. I have done my Bachelors in Computer Applications
-              from Panjab University, Chandigarh, India. Also i am doing Masters for the same while
+              software engineering experience. I have done my Bachelor of Computer Applications from
+              Panjab University, Chandigarh, India. Also i am doing Masters for the same while
               working full time. I enjoy creating things that live on the internet. My interest in
-              web development started back in 2014 during my class 9th subject called
+              web development started back in 2014 during my 9th grade subject called
               &quot;Information Technology&quot; where i learnt about some basic HTML &amp; CSS!
             </p>
             {/* <p>Why i dont have much to write here 🤔</p> */}

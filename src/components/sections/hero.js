@@ -65,7 +65,7 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a software developer specializing in backend and frontend digital experiences.
+        I’m a Full Stack Developer specializing in building digital experiences.
         {/* Currently, I’m working at{' '}
         <a href="https://www.geminisolutions.com" target="_blank" rel="noreferrer">
           Gemini Solutions
@@ -74,7 +74,7 @@ const Hero = () => {
     </>
   );
   const five = (
-    <a className="email-link" href="https://madhavkwatra.site/" target="_blank" rel="noreferrer">
+    <a className="email-link" href="#projects" rel="noreferrer">
       Check out my projects!
     </a>
   );
