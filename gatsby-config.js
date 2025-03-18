@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Madhav Kwatra',
     description:
-      'Madhav Kwatra is a software developer specializing in backend (and occasionally frontend) digital experiences.',
+      'Madhav Kwatra is a Full Stack Developer specializing in building digital experiences.',
     siteUrl: 'https://madhavkwatra.site', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@madhav_kwatra',
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Brittany Chiang',
-        short_name: 'Brittany Chiang',
+        name: 'Madhav Kwatra',
+        short_name: 'Madhav Kwatra',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
