@@ -150,9 +150,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-simple-analytics',
       options: {
-        trackingId: 'UA-45666519-2',
+        trackPageViews: true,
+        events: true,
+        eventsGlobal: 'sa_event',
       },
     },
   ],
