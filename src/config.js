@@ -18,8 +18,8 @@ module.exports = {
       url: 'https://www.instagram.com/iammadhavkwatra',
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/madhav_kwatra',
+      name: 'X',
+      url: 'https://x.com/madhav_kwatra',
     },
     {
       name: 'Linkedin',
