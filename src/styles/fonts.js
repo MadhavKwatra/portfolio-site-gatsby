@@ -1,75 +1,64 @@
 import { css } from 'styled-components';
 
-import CalibreRegularWoff from '@fonts/Calibre/Calibre-Regular.woff';
-import CalibreRegularWoff2 from '@fonts/Calibre/Calibre-Regular.woff2';
-import CalibreMediumWoff from '@fonts/Calibre/Calibre-Medium.woff';
-import CalibreMediumWoff2 from '@fonts/Calibre/Calibre-Medium.woff2';
-import CalibreSemiboldWoff from '@fonts/Calibre/Calibre-Semibold.woff';
-import CalibreSemiboldWoff2 from '@fonts/Calibre/Calibre-Semibold.woff2';
+// Inter (https://rsms.me/inter) and JetBrains Mono (https://www.jetbrains.com/lp/mono/)
+// are both licensed under the SIL Open Font License 1.1, see the OFL.txt next to each font.
+import InterRegular from '@fonts/Inter/Inter-Regular.woff2';
+import InterMedium from '@fonts/Inter/Inter-Medium.woff2';
+import InterSemiBold from '@fonts/Inter/Inter-SemiBold.woff2';
 
-import CalibreRegularItalicWoff from '@fonts/Calibre/Calibre-RegularItalic.woff';
-import CalibreRegularItalicWoff2 from '@fonts/Calibre/Calibre-RegularItalic.woff2';
-import CalibreMediumItalicWoff from '@fonts/Calibre/Calibre-MediumItalic.woff';
-import CalibreMediumItalicWoff2 from '@fonts/Calibre/Calibre-MediumItalic.woff2';
-import CalibreSemiboldItalicWoff from '@fonts/Calibre/Calibre-SemiboldItalic.woff';
-import CalibreSemiboldItalicWoff2 from '@fonts/Calibre/Calibre-SemiboldItalic.woff2';
+import InterItalic from '@fonts/Inter/Inter-Italic.woff2';
+import InterMediumItalic from '@fonts/Inter/Inter-MediumItalic.woff2';
+import InterSemiBoldItalic from '@fonts/Inter/Inter-SemiBoldItalic.woff2';
 
-import SFMonoRegularWoff from '@fonts/SFMono/SFMono-Regular.woff';
-import SFMonoRegularWoff2 from '@fonts/SFMono/SFMono-Regular.woff2';
-import SFMonoSemiboldWoff from '@fonts/SFMono/SFMono-Semibold.woff';
-import SFMonoSemiboldWoff2 from '@fonts/SFMono/SFMono-Semibold.woff2';
+import JetBrainsMonoRegular from '@fonts/JetBrainsMono/JetBrainsMono-Regular.woff2';
+import JetBrainsMonoSemiBold from '@fonts/JetBrainsMono/JetBrainsMono-SemiBold.woff2';
 
-import SFMonoRegularItalicWoff from '@fonts/SFMono/SFMono-RegularItalic.woff';
-import SFMonoRegularItalicWoff2 from '@fonts/SFMono/SFMono-RegularItalic.woff2';
-import SFMonoSemiboldItalicWoff from '@fonts/SFMono/SFMono-SemiboldItalic.woff';
-import SFMonoSemiboldItalicWoff2 from '@fonts/SFMono/SFMono-SemiboldItalic.woff2';
+import JetBrainsMonoItalic from '@fonts/JetBrainsMono/JetBrainsMono-Italic.woff2';
+import JetBrainsMonoSemiBoldItalic from '@fonts/JetBrainsMono/JetBrainsMono-SemiBoldItalic.woff2';
 
-const calibreNormalWeights = {
-  400: [CalibreRegularWoff, CalibreRegularWoff2],
-  500: [CalibreMediumWoff, CalibreMediumWoff2],
-  600: [CalibreSemiboldWoff, CalibreSemiboldWoff2],
+const interNormalWeights = {
+  400: InterRegular,
+  500: InterMedium,
+  600: InterSemiBold,
 };
 
-const calibreItalicWeights = {
-  400: [CalibreRegularItalicWoff, CalibreRegularItalicWoff2],
-  500: [CalibreMediumItalicWoff, CalibreMediumItalicWoff2],
-  600: [CalibreSemiboldItalicWoff, CalibreSemiboldItalicWoff2],
+const interItalicWeights = {
+  400: InterItalic,
+  500: InterMediumItalic,
+  600: InterSemiBoldItalic,
 };
 
-const sfMonoNormalWeights = {
-  400: [SFMonoRegularWoff, SFMonoRegularWoff2],
-  600: [SFMonoSemiboldWoff, SFMonoSemiboldWoff2],
+const jetBrainsMonoNormalWeights = {
+  400: JetBrainsMonoRegular,
+  600: JetBrainsMonoSemiBold,
 };
 
-const sfMonoItalicWeights = {
-  400: [SFMonoRegularItalicWoff, SFMonoRegularItalicWoff2],
-  600: [SFMonoSemiboldItalicWoff, SFMonoSemiboldItalicWoff2],
+const jetBrainsMonoItalicWeights = {
+  400: JetBrainsMonoItalic,
+  600: JetBrainsMonoSemiBoldItalic,
 };
 
-const calibre = {
-  name: 'Calibre',
-  normal: calibreNormalWeights,
-  italic: calibreItalicWeights,
+const inter = {
+  name: 'Inter',
+  normal: interNormalWeights,
+  italic: interItalicWeights,
 };
 
-const sfMono = {
-  name: 'SF Mono',
-  normal: sfMonoNormalWeights,
-  italic: sfMonoItalicWeights,
+const jetBrainsMono = {
+  name: 'JetBrains Mono',
+  normal: jetBrainsMonoNormalWeights,
+  italic: jetBrainsMonoItalicWeights,
 };
 
+// Every browser in our browserslist supports woff2, so no woff fallback is needed
 const createFontFaces = (family, style = 'normal') => {
   let styles = '';
 
-  for (const [weight, formats] of Object.entries(family[style])) {
-    const woff = formats[0];
-    const woff2 = formats[1];
-
+  for (const [weight, woff2] of Object.entries(family[style])) {
     styles += `
       @font-face {
         font-family: '${family.name}';
-        src: url(${woff2}) format('woff2'),
-            url(${woff}) format('woff');
+        src: url(${woff2}) format('woff2');
         font-weight: ${weight};
         font-style: ${style};
         font-display: auto;
@@ -80,14 +69,14 @@ const createFontFaces = (family, style = 'normal') => {
   return styles;
 };
 
-const calibreNormal = createFontFaces(calibre);
-const calibreItalic = createFontFaces(calibre, 'italic');
+const interNormal = createFontFaces(inter);
+const interItalic = createFontFaces(inter, 'italic');
 
-const sfMonoNormal = createFontFaces(sfMono);
-const sfMonoItalic = createFontFaces(sfMono, 'italic');
+const jetBrainsMonoNormal = createFontFaces(jetBrainsMono);
+const jetBrainsMonoItalic = createFontFaces(jetBrainsMono, 'italic');
 
 const Fonts = css`
-  ${calibreNormal + calibreItalic + sfMonoNormal + sfMonoItalic}
+  ${interNormal + interItalic + jetBrainsMonoNormal + jetBrainsMonoItalic}
 `;
 
 export default Fonts;

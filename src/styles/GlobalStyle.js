@@ -188,6 +188,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: clamp(26px, 5vw, var(--fz-heading));
     white-space: nowrap;
 
+    // Long headings ("Some Things I have Built.") are wider than small phones
+    @media (max-width: 480px) {
+      white-space: normal;
+    }
+
     &:before {
       position: relative;
       bottom: 4px;
@@ -223,6 +228,11 @@ const GlobalStyle = createGlobalStyle`
       }
       @media (max-width: 600px) {
         margin-left: 10px;
+      }
+      // Give the heading text priority; the line takes whatever space is left
+      @media (max-width: 480px) {
+        flex: 1 0 20px;
+        width: auto;
       }
     }
   }
