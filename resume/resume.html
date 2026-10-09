@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Madhav Kwatra – Resume</title>
+    <!--
+      Source for static/resume.pdf. Edit this file, then re-print it (see README > Resume).
+      Kept ATS-friendly on purpose: one column, real text, standard headings,
+      no tables, icons or header/footer content.
+    -->
+    <style>
+      @page {
+        size: A4;
+        margin: 10mm 13mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #1f1f1f;
+        font-family: Calibri, Carlito, Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.25;
+      }
+
+      a {
+        color: #1155cc;
+        text-decoration: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 24pt;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #333b4f;
+      }
+
+      .contact {
+        margin: 3pt 0 0;
+      }
+
+      .contact span + span::before {
+        content: ' | ';
+        color: #666;
+      }
+
+      .summary {
+        margin: 7pt 0 0;
+      }
+
+      h2 {
+        margin: 8pt 0 3pt;
+        padding-bottom: 1.5pt;
+        border-bottom: 1px solid #bbb;
+        font-size: 11.5pt;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .item {
+        margin: 0 0 4pt;
+      }
+
+      .item-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12pt;
+      }
+
+      .item-head .when {
+        flex-shrink: 0;
+        color: #555;
+      }
+
+      .role {
+        font-style: italic;
+        color: #444;
+      }
+
+      ul {
+        margin: 2pt 0 0;
+        padding-left: 14pt;
+      }
+
+      li {
+        margin: 0 0 1.5pt;
+      }
+
+      p {
+        margin: 0 0 2pt;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Madhav Kwatra</h1>
+    <p class="contact">
+      <span><a href="mailto:madhav.kwat@gmail.com">madhav.kwat@gmail.com</a></span>
+      <span><a href="https://madhavkwatra.in">madhavkwatra.in</a></span>
+      <span><a href="https://www.linkedin.com/in/madhav-kwatra/">linkedin.com/in/madhav-kwatra</a></span>
+      <span><a href="https://github.com/MadhavKwatra">github.com/MadhavKwatra</a></span>
+    </p>
+
+    <p class="summary">
+      Full-stack developer with over 2 years of experience building product features from the
+      database to the phone screen, currently shipping the mobile app, login sessions and inventory
+      of BoostOwl, a live WhatsApp-based SaaS for Indian small businesses.
+    </p>
+
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <div><b>BoostOwl</b> – <span class="role">Software Engineer Intern</span></div>
+        <div class="when">May 2026 – Present</div>
+      </div>
+      <ul>
+        <li>
+          Built BoostOwl's installable mobile app (PWA) by rebuilding every screen for phones in
+          React (318 components, offline start, safe updates), so shop owners run orders, stock and
+          chats from a phone while desktop stayed unchanged.
+        </li>
+        <li>
+          Ended random user logouts by redesigning refresh-token rotation in Node.js, PostgreSQL and
+          Redis (atomic rotation, short grace window, one refresh shared across tabs) without
+          weakening token-theft protection.
+        </li>
+        <li>
+          Designed batch-level inventory with FIFO / expiry-first stock allocation and stock
+          reservation across 12 PostgreSQL migrations, and fixed a GST rounding bug that billed an
+          INR 200 order as INR 199.99.
+        </li>
+        <li>
+          Built Web Push notifications and an in-app action list on Kafka events, so staff learn
+          about new chats, orders and payments even with the app closed.
+        </li>
+        <li>
+          Shipped 11 PRs using Claude Code and Cursor while owning design, review and testing:
+          fixed 129 code-review findings, each with a test that failed first, and added 1,030+ test
+          files (Vitest, Playwright).
+        </li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <div><b>Upwork</b> – <span class="role">Freelance Developer</span></div>
+        <div class="when">Mar 2025</div>
+      </div>
+      <ul>
+        <li>
+          Built real-time chat with AI-to-human handoff for an AI-powered CV builder: a chat widget
+          with anonymous and signed-in sessions, saved chat history and typing indicators (React,
+          Vite, Socket.IO).
+        </li>
+        <li>
+          Built the admin live-chat page, with real-time notifications that open the right
+          conversation, and unread-message handling (React, Redux Toolkit / RTK Query, Socket.IO).
+        </li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <div>
+          <b>Gemini Solutions</b>, Panchkula – <span class="role">Full Stack Developer</span>
+        </div>
+        <div class="when">Nov 2022 – Sep 2024</div>
+      </div>
+      <ul>
+        <li>
+          Built backend APIs for an internal HR system (HRIS) – analytics, resignation flow,
+          filters and integrations with other internal projects – using Node.js, Serverless and
+          MongoDB, and built the feedback flow for onboarded candidates from scratch.
+        </li>
+        <li>
+          Wrote OpenAPI / Swagger documentation for the existing HRIS backend APIs, and used MongoDB
+          aggregation pipelines to query and reshape data.
+        </li>
+        <li>
+          Fixed bugs across the Angular frontend and Node.js backend, and shipped frontend and
+          backend releases every sprint.
+        </li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <div>
+          <b>GumiGumi</b> – travel tracker app |
+          <a href="https://play.google.com/store/apps/details?id=com.madhavKwatra.gumiGumiApp"
+            >Google Play</a
+          >
+        </div>
+        <div class="when">Apr 2025</div>
+      </div>
+      <p>
+        3D-globe travel tracker with photo uploads, stats, share cards and an AI chatbot. Built solo in
+        4 weeks for notJust Hack 2025 and shipped to Google Play and the App Store (React Native,
+        Expo, TypeScript, Supabase, Mapbox, Gemini API).
+      </p>
+    </div>
+
+    <div class="item">
+      <p>
+        <b>Spill It</b> – anonymous messaging app (Next.js, Auth.js, MongoDB) |
+        <a href="https://mystery-message-psi.vercel.app/">mystery-message-psi.vercel.app</a> |
+        <a href="https://github.com/MadhavKwatra/mystery-message">Code</a>
+      </p>
+      <p>
+        <b>Mini URL</b> – URL shortener with link analytics (React, Express, MongoDB) |
+        <a href="https://mini-url-ui.vercel.app/">mini-url-ui.vercel.app</a> |
+        <a href="https://github.com/MadhavKwatra/mini-url-ui">Code</a>
+      </p>
+      <p>
+        <b>BooksLelo</b> – used-textbook marketplace, BCA final-year project (PHP, MySQL, AWS) | <a href="https://github.com/MadhavKwatra/BooksLelo-Project">Code</a>
+      </p>
+      <p>
+        <b>Bolti Topi</b> – Harry Potter Sorting Hat app with English / Hinglish (React Native, Expo) |
+        <a href="https://github.com/MadhavKwatra/bolti-topi-app">Code</a>
+      </p>
+    </div>
+
+    <h2>Skills</h2>
+
+    <div class="skills">
+      <p>
+        <b>Languages:</b> TypeScript, JavaScript, SQL, PHP, HTML/CSS. <b>Spoken:</b> English, Hindi,
+        Punjabi
+      </p>
+      <p>
+        <b>Frontend:</b> React, Next.js, React Native (Expo), Angular, Vite, Zustand, Redux Toolkit,
+        Tailwind CSS, PWA (service workers, Web Push)
+      </p>
+      <p>
+        <b>Backend &amp; Data:</b> Node.js, Express, REST APIs, Kafka, Redis, Socket.IO, Serverless,
+        PostgreSQL (row-level security, migrations), MongoDB, MySQL
+      </p>
+      <p>
+        <b>Testing &amp; Tools:</b> Vitest, Jest, Playwright, AWS, Vercel, Cloudflare, Docker, Git,
+        pnpm, Claude Code, Cursor
+      </p>
+    </div>
+
+    <h2>Education</h2>
+
+    <div class="item-head">
+      <div><b>IGNOU</b>, Delhi – <span class="role">Master of Computer Applications</span></div>
+      <div class="when">Aug 2023 – Present</div>
+    </div>
+    <div class="item">
+      <div class="item-head">
+        <div>
+          <b>Panjab University</b> (GGDSD College), Chandigarh –
+          <span class="role">Bachelor of Computer Applications</span>, Score: 80.45%
+        </div>
+        <div class="when">Aug 2019 – Aug 2022</div>
+      </div>
+    </div>
+
+    <h2>Achievements &amp; Certifications</h2>
+
+    <ul>
+      <li>
+        notJust Hack 2025 – built and launched GumiGumi in the month-long hackathon; selected for the
+        final showcase |
+        <a href="https://www.notjusthack.com/app/gumigumi">notjusthack.com/app/gumigumi</a>
+      </li>
+      <li>2nd prize, Inter-College IT Quiz, D.A.V. College, Chandigarh</li>
+      <li>
+        HackerRank certificates: Node.js (Intermediate) |
+        <a href="https://www.hackerrank.com/certificates/cf9c4f0be624"
+          >hackerrank.com/certificates/cf9c4f0be624</a
+        >; Frontend Developer (React) |
+        <a href="https://www.hackerrank.com/certificates/0dd983f9b8e4"
+          >hackerrank.com/certificates/0dd983f9b8e4</a
+        >
+      </li>
+    </ul>
+
+  </body>
+</html>
