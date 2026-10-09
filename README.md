@@ -69,7 +69,7 @@ Thanks!
 "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless --disable-gpu --no-pdf-header-footer   --print-to-pdf="$(cygpath -w "$PWD/static/resume.pdf")"   "file:///$(cygpath -m "$PWD/resume/resume.html" | sed 's/ /%20/g')"
 ```
 
-Check that it is still one page and reads in order: `pdftotext -layout static/resume.pdf -`.
+Check that it is still one page, `grep -a -o '/Count [0-9]*' static/resume.pdf` must print `/Count 1`, and that it reads in order: `pdftotext -layout static/resume.pdf -`.
 
 ## 🎨 Color Reference
 
