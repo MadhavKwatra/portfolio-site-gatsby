@@ -17,12 +17,14 @@ const StyledHeroSection = styled.section`
     padding-top: var(--nav-height);
   }
 
-  h1 {
+  .intro {
     margin: 0 0 30px 4px;
+    max-width: none;
     color: var(--green);
     font-family: var(--font-mono);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
+    line-height: 1.1;
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
@@ -59,8 +61,8 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Madhav Kwatra.</h2>;
+  const one = <p className="intro">Hi, my name is</p>;
+  const two = <h1 className="big-heading">Madhav Kwatra.</h1>;
   const three = <h3 className="big-heading">I build things for the web and mobile.</h3>;
   const four = (
     <>

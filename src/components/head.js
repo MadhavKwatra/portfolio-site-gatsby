@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
+import { currentRole, socialMedia } from '@config';
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
@@ -33,6 +34,22 @@ const Head = ({ title = null, description = null, image = null }) => {
     url: `${siteUrl}${pathname}`,
   };
 
+  // https://schema.org/Person, helps search engines show who the site is about
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: defaultTitle,
+    url: siteUrl,
+    image: `${siteUrl}${defaultImage}`,
+    jobTitle: currentRole.title,
+    worksFor: {
+      '@type': 'Organization',
+      name: currentRole.company,
+      url: currentRole.url,
+    },
+    sameAs: socialMedia.map(({ url }) => url),
+  };
+
   return (
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
       <html lang="en" />
@@ -53,6 +70,8 @@ const Head = ({ title = null, description = null, image = null }) => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+
+      <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
     </Helmet>
   );
 };

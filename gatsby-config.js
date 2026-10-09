@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Madhav Kwatra',
     description:
-      'Madhav Kwatra is a Full Stack Developer specializing in building digital experiences.',
+      'Madhav Kwatra is a full-stack developer and Software Engineer Intern at BoostOwl, building web and mobile apps with React, Node.js and PostgreSQL.',
     siteUrl: 'https://madhavkwatra.in', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@madhav_kwatra',

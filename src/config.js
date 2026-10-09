@@ -1,6 +1,13 @@
 module.exports = {
   email: 'madhav.kwat@gmail.com',
 
+  // Used for the Person structured data (JSON-LD) in head.js
+  currentRole: {
+    title: 'Software Engineer Intern',
+    company: 'BoostOwl',
+    url: 'https://boostowl.io',
+  },
+
   socialMedia: [
     {
       name: 'GitHub',
