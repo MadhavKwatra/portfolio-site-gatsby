@@ -159,9 +159,9 @@ const About = () => {
               <a href="https://boostowl.io/" target="_blank" rel="noreferrer">
                 BoostOwl
               </a>
-              , building full-stack features for a WhatsApp-based platform that small businesses
-              across India use every day. Before that, I worked as a Full Stack Engineer at Gemini
-              Solutions. In April 2025, I built and shipped{' '}
+              , an early-stage startup building a WhatsApp-based platform for small businesses in
+              India. Before that, I worked as a Full Stack Engineer at Gemini Solutions. In April
+              2025, I built and shipped{' '}
               <a href="https://www.notjusthack.com/app/gumigumi" target="_blank" rel="noreferrer">
                 GumiGumi
               </a>{' '}

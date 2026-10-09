@@ -1,5 +1,5 @@
 ---
-date: '3'
+date: '2'
 title: 'Spill It'
 cover: './demo.png'
 github: 'https://github.com/MadhavKwatra/mystery-message'

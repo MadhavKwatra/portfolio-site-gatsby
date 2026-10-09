@@ -1,5 +1,5 @@
 ---
-date: '6'
+date: '5'
 title: 'Bolti Topi App'
 cover: './demo.jpg'
 github: 'https://github.com/MadhavKwatra/bolti-topi-app'

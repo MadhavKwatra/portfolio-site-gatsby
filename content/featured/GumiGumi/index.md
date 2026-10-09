@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '1'
 title: 'GumiGumi'
 cover: './gumigumi.png'
 external: 'https://play.google.com/store/apps/details?id=com.madhavKwatra.gumiGumiApp'
