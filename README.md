@@ -5,7 +5,7 @@
   Portfolio Site
 </h1>
 <p align="center">
-  My personal website at <a href="https://madhavkwatra.site" target="_blank">madhavkwatra.site</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+  My personal website at <a href="https://madhavkwatra.in" target="_blank">madhavkwatra.in</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
 </p>
 <p align="center">
   <a href="https://app.netlify.com/sites/madhavkwatra/deploys" target="_blank">

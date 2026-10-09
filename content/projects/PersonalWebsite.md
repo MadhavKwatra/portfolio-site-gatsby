@@ -2,7 +2,7 @@
 date: '2024-06-10'
 title: 'My Personal Portfolio Website'
 github: 'https://github.com/MadhavKwatra/portfolio-site-gatsby'
-external: 'https://madhavkwatra.site/'
+external: 'https://madhavkwatra.in/'
 tech:
   - React
   - GatsbyJS

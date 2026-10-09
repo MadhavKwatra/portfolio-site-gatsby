@@ -5,7 +5,7 @@ module.exports = {
     title: 'Madhav Kwatra',
     description:
       'Madhav Kwatra is a Full Stack Developer specializing in building digital experiences.',
-    siteUrl: 'https://madhavkwatra.site', // No trailing slash allowed!
+    siteUrl: 'https://madhavkwatra.in', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@madhav_kwatra',
   },

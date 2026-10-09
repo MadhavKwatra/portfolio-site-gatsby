@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
-const Head = ({ title, description, image }) => {
+const Head = ({ title = null, description = null, image = null }) => {
   const { pathname } = useLocation();
 
   const { site } = useStaticQuery(graphql`
@@ -37,6 +37,8 @@ const Head = ({ title, description, image }) => {
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
       <html lang="en" />
 
+      <link rel="canonical" href={seo.url} />
+
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
@@ -61,10 +63,4 @@ Head.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-};
-
-Head.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
 };
