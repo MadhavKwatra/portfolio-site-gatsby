@@ -6,6 +6,29 @@
 
 const path = require('path');
 
+// Declare the optional frontmatter fields that page queries ask for. Gatsby
+// infers types from content, so a field that no markdown file sets (or only
+// sets to '') would otherwise vanish from the schema and break the build.
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createTypes(`
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+    }
+
+    type MarkdownRemarkFrontmatter {
+      title: String
+      date: String
+      tech: [String]
+      github: String
+      external: String
+      ios: String
+      android: String
+      company: String
+      showInProjects: Boolean
+    }
+  `);
+};
+
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
