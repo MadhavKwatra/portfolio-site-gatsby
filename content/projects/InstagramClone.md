@@ -11,4 +11,4 @@ company: 'Personal'
 showInProjects: true
 ---
 
-Instagram UI clone. It uses dummy data to populate the Feed, Profile , Explore page.
+An Instagram UI clone. It uses dummy data to fill the Feed, Profile and Explore pages.

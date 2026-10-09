@@ -13,4 +13,4 @@ company: 'Personal'
 showInProjects: true
 ---
 
-A basic youtube clone using React. It uses some dummy data. Just wanted to create the ui my self using web technologies.
+A basic YouTube clone in React, filled with dummy data. I built it to recreate the YouTube UI myself with web technologies.

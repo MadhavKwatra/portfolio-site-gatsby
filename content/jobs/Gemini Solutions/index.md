@@ -7,10 +7,10 @@ range: 'Nov 2022 - Sep 2024'
 url: 'https://www.geminisolutions.com/'
 ---
 
-- Created OpenAPI/Swagger Docs for existing internal software (HRIS ) Backend APIs
-- Fixed bugs in Backend and Frontend of HRIS (Angular in Frontend, NodeJS,Serverless, MongoDB in Backend)
-- Used MongoDB features like Aggregation, etc. to manipulate data as required.
-- Implemented APIs for Analytics, Resignation Flow, Integrations (with other Internal Projects), Filters in Different Areas and More.
-- Released Backend and Frontend in Sprints Releases
-- Created feedback flow for onboarded candidates
-- Worked on adding the Requirements from the HR Teams
+- Wrote OpenAPI/Swagger docs for the existing backend APIs of an internal HR system (HRIS).
+- Fixed bugs across the HRIS frontend (Angular) and backend (Node.js, Serverless, MongoDB).
+- Used MongoDB aggregation pipelines to query and reshape data.
+- Built APIs for analytics, the resignation flow, integrations with other internal projects, filters and more.
+- Shipped backend and frontend releases every sprint.
+- Built the feedback flow for onboarded candidates.
+- Implemented new requirements from the HR teams.

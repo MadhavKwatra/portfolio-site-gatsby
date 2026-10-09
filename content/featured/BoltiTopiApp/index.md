@@ -10,7 +10,4 @@ tech:
   - React Context API
 ---
 
-It is a React Native app inspired from the sorting hat from the world of Harry Potter.
-In this you'll be randomly sorted to a house after clicking the Sort Button.
-You can also edit your image with stickers of Congratulations,House Images and others.
-Also there is a language switcher too, where you can switch the languages of house names to English or Hinglish.
+A React Native app inspired by the Sorting Hat from the world of Harry Potter. Tap the Sort button and you are randomly sorted into a house. You can decorate your photo with stickers, such as congratulations messages and house images, and a language switcher shows the house names in English or Hinglish.

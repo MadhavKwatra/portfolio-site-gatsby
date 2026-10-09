@@ -12,4 +12,4 @@ tech:
   - Apache
 ---
 
-A full stack web app where people can sell their used text books (similar to OLX but just for books). Built this as my Bachelors final semester Project.
+A full-stack web app where people can sell their used textbooks, like OLX but just for books. I built it as my final-semester project for my bachelor's degree.

@@ -12,4 +12,4 @@ company: 'Personal'
 showInProjects: true
 ---
 
-Built a personal portfolio website using Gatsby and React. Forked from Brittany Chiang Portfolio Website.
+My personal portfolio, built with Gatsby and React. Forked from Brittany Chiang's portfolio and adapted to my own work.

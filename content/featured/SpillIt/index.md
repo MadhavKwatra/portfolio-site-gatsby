@@ -12,4 +12,4 @@ tech:
   - Vercel
 ---
 
-A anonymous messaging platform where you can create a link and share it on your social media to receive anonymous messages from people (similar to ngl.link). You can also view the analytics of the messages received on your link.
+An anonymous messaging platform, similar to ngl.link. Create a link, share it on social media, and receive anonymous messages from anyone. You can also see analytics for the messages your link receives.
