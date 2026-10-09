@@ -1,9 +1,8 @@
 ---
-date: '3'
+date: '6'
 title: 'Bolti Topi App'
 cover: './demo.jpg'
 github: 'https://github.com/MadhavKwatra/bolti-topi-app'
-external: 'https://github.com/MadhavKwatra/bolti-topi-app'
 
 tech:
   - React Native

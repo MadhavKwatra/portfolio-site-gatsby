@@ -1,9 +1,8 @@
 ---
-date: '2'
+date: '5'
 title: 'BooksLelo'
 cover: './bookslelo.png'
 github: 'https://github.com/MadhavKwatra/BooksLelo-Project'
-external: 'http://16.171.116.110/'
 
 tech:
   - PHP

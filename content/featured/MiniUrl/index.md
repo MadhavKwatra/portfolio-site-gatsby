@@ -1,5 +1,5 @@
 ---
-date: '1'
+date: '4'
 title: 'Mini URL'
 cover: './demo.png'
 github: 'https://github.com/MadhavKwatra/mini-url-ui'
