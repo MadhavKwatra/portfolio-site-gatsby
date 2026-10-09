@@ -154,7 +154,7 @@ const About = () => {
             </p>
 
             <p>
-              I have over 2 years of software engineering experience. I’m currently a Software
+              I’ve been building software professionally since 2022. I’m currently a Software
               Engineer Intern at{' '}
               <a href="https://boostowl.io/" target="_blank" rel="noreferrer">
                 BoostOwl
