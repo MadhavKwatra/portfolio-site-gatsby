@@ -65,11 +65,12 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a Full Stack Developer specializing in building digital experiences.
-        {/* Currently, I’m working at{' '}
-        <a href="https://www.geminisolutions.com" target="_blank" rel="noreferrer">
-          Gemini Solutions
-        </a> .*/}
+        I’m a Full Stack Developer specializing in building digital experiences. Currently, I’m a
+        Software Engineer Intern at{' '}
+        <a href="https://boostowl.io/" target="_blank" rel="noreferrer">
+          BoostOwl
+        </a>
+        .
       </p>
     </>
   );

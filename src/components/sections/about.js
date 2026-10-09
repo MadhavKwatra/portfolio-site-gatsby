@@ -126,16 +126,17 @@ const About = () => {
   }, []);
 
   const skills = [
-    'JavaScript',
     'TypeScript',
-    'Angular',
+    'JavaScript',
     'React/Next.js',
+    'Node.js/Express',
+    'PostgreSQL',
+    'Redis',
+    'Kafka',
     'MongoDB',
-    'Node.js',
     'React Native',
+    'Playwright',
     'AWS',
-    'PHP',
-    'SQL',
     'Git',
   ];
 
@@ -147,14 +148,30 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Madhav . I am a Computer Science Graduate with almost 2 years of
-              software engineering experience. I have done my Bachelor of Computer Applications from
-              Panjab University, Chandigarh, India. Also i am doing Masters for the same while
-              working full time. I enjoy creating things that live on the internet. My interest in
-              web development started back in 2014 during my 9th grade subject called
-              &quot;Information Technology&quot; where i learnt about some basic HTML &amp; CSS!
+              Hello! My name is Madhav, and I enjoy creating things that live on the internet. My
+              interest in web development started back in 2014, when a 9th-grade subject called
+              &quot;Information Technology&quot; taught me some basic HTML &amp; CSS!
             </p>
-            {/* <p>Why i dont have much to write here 🤔</p> */}
+
+            <p>
+              I have over 2 years of software engineering experience. I’m currently a Software
+              Engineer Intern at{' '}
+              <a href="https://boostowl.io/" target="_blank" rel="noreferrer">
+                BoostOwl
+              </a>
+              , building full-stack features for a WhatsApp-based platform that small businesses
+              across India use every day. Before that, I worked as a Full Stack Engineer at Gemini
+              Solutions. In April 2025, I built and shipped{' '}
+              <a href="https://www.notjusthack.com/app/gumigumi" target="_blank" rel="noreferrer">
+                GumiGumi
+              </a>{' '}
+              solo for notJust Hack 2025.
+            </p>
+
+            <p>
+              I have a Bachelor of Computer Applications from Panjab University, Chandigarh, and I’m
+              now doing a Master of Computer Applications alongside work.
+            </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
