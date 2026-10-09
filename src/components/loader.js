@@ -36,12 +36,21 @@ const StyledLoader = styled.div`
   }
 `;
 
+const INTRO_PLAYED_KEY = 'introPlayed';
+
 const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const animate = () => {
     const loader = anime.timeline({
-      complete: () => finishLoading(),
+      complete: () => {
+        try {
+          sessionStorage.setItem(INTRO_PLAYED_KEY, 'true');
+        } catch (e) {
+          // Storage can be blocked (e.g. some private modes); the intro then plays every visit
+        }
+        finishLoading();
+      },
     });
 
     loader
@@ -76,6 +85,19 @@ const Loader = ({ finishLoading }) => {
   };
 
   useEffect(() => {
+    // Only play the intro once per browser session
+    let introPlayed = false;
+    try {
+      introPlayed = sessionStorage.getItem(INTRO_PLAYED_KEY) === 'true';
+    } catch (e) {
+      // Storage can be blocked; fall through and play the intro
+    }
+
+    if (introPlayed) {
+      finishLoading();
+      return;
+    }
+
     const timeout = setTimeout(() => setIsMounted(true), 10);
     animate();
     return () => clearTimeout(timeout);
