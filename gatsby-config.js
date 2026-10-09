@@ -29,7 +29,9 @@ module.exports = {
         icon: 'src/images/logo.png',
       },
     },
-    `gatsby-plugin-offline`,
+    // Replaces gatsby-plugin-offline: ships a self-destroying sw.js so browsers
+    // that cached the site with the old service worker drop it and load fresh
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
