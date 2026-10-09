@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -104,7 +103,7 @@ const Footer = () => {
         </ul>
       </StyledSocialLinks>
 
-      <StyledCredit tabindex="-1">
+      <StyledCredit>
         <a href="https://github.com/bchiang7/v4">
           <div>Originally Designed &amp; Built by Brittany Chiang</div>
 
@@ -129,10 +128,6 @@ const Footer = () => {
       </StyledCredit>
     </StyledFooter>
   );
-};
-
-Footer.propTypes = {
-  githubInfo: PropTypes.object,
 };
 
 export default Footer;
