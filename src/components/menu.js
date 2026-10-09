@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { navLinks } from '@config';
@@ -243,15 +242,17 @@ const Menu = () => {
     };
   }, [menuOpen]);
 
+  // Blur the page behind the open menu (body.blur in GlobalStyle)
+  useEffect(() => {
+    document.body.classList.toggle('blur', menuOpen);
+    return () => document.body.classList.remove('blur');
+  }, [menuOpen]);
+
   const wrapperRef = useRef();
   useOnClickOutside(wrapperRef, () => setMenuOpen(false));
 
   return (
     <StyledMenu>
-      <Helmet>
-        <body className={menuOpen ? 'blur' : ''} />
-      </Helmet>
-
       <div ref={wrapperRef}>
         <StyledHamburgerButton
           onClick={toggleMenu}

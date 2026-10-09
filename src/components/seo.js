@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 import { currentRole, socialMedia } from '@config';
 
-// https://www.gatsbyjs.com/docs/add-seo-component/
+// Rendered from each page's Gatsby Head export
+// https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
 
-const Head = ({ title = null, description = null, image = null }) => {
-  const { pathname } = useLocation();
-
+const Seo = ({ title = null, description = null, image = null, pathname = '/' }) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -28,7 +25,7 @@ const Head = ({ title = null, description = null, image = null }) => {
     site.siteMetadata;
 
   const seo = {
-    title: title || defaultTitle,
+    title: title ? `${title} | ${defaultTitle}` : defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
@@ -51,8 +48,9 @@ const Head = ({ title = null, description = null, image = null }) => {
   };
 
   return (
-    <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
+    <>
       <html lang="en" />
+      <title>{seo.title}</title>
 
       <link rel="canonical" href={seo.url} />
 
@@ -71,15 +69,20 @@ const Head = ({ title = null, description = null, image = null }) => {
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
 
-      <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
-    </Helmet>
+      {/* Set as raw HTML: React would escape the quotes in text children */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+    </>
   );
 };
 
-export default Head;
+export default Seo;
 
-Head.propTypes = {
+Seo.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
+  pathname: PropTypes.string,
 };

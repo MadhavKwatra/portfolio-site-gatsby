@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
@@ -84,6 +83,12 @@ const Loader = ({ finishLoading }) => {
       });
   };
 
+  // Stop the page scrolling behind the loader (body.hidden in GlobalStyle)
+  useEffect(() => {
+    document.body.classList.add('hidden');
+    return () => document.body.classList.remove('hidden');
+  }, []);
+
   useEffect(() => {
     // Only play the intro once per browser session
     let introPlayed = false;
@@ -105,8 +110,6 @@ const Loader = ({ finishLoading }) => {
 
   return (
     <StyledLoader className="loader" $isMounted={isMounted}>
-      <Helmet bodyAttributes={{ class: `hidden` }} />
-
       <div className="logo-wrapper">
         <IconLoader />
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Layout, Hero, About, Jobs, Featured, Projects, Contact } from '@components';
+import { Layout, Seo, Hero, About, Jobs, Featured, Projects, Contact } from '@components';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -25,3 +25,8 @@ IndexPage.propTypes = {
 };
 
 export default IndexPage;
+
+// Gatsby strips the `Head` export from the page bundle, so any statement that
+// references Head (like Head.propTypes) would throw there.
+// eslint-disable-next-line react/prop-types
+export const Head = ({ location }) => <Seo pathname={location.pathname} />;
