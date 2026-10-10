@@ -1,6 +1,49 @@
 module.exports = {
   email: 'madhav.kwat@gmail.com',
 
+  // Cookie-based analytics (see src/utils/analytics.js). Leave an ID empty to turn
+  // that tool off.
+  analytics: {
+    ga4MeasurementId: 'G-86D9BT0N2T', // Google Analytics 4
+    clarityProjectId: 'ywmh1o6qmg', // Microsoft Clarity
+    // Visitors here must opt in first (EEA, UK, Switzerland). Google uses these
+    // ISO country codes to deny analytics cookies by IP until consent is given.
+    consentRegions: [
+      'AT',
+      'BE',
+      'BG',
+      'HR',
+      'CY',
+      'CZ',
+      'DK',
+      'EE',
+      'FI',
+      'FR',
+      'DE',
+      'GR',
+      'HU',
+      'IE',
+      'IT',
+      'LV',
+      'LT',
+      'LU',
+      'MT',
+      'NL',
+      'PL',
+      'PT',
+      'RO',
+      'SK',
+      'SI',
+      'ES',
+      'SE',
+      'IS',
+      'LI',
+      'NO',
+      'GB',
+      'CH',
+    ],
+  },
+
   // Used for the Person structured data (JSON-LD) in head.js
   currentRole: {
     title: 'Software Engineer Intern',

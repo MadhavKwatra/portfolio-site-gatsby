@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -125,6 +126,9 @@ const Footer = () => {
         <a href="https://github.com/MadhavKwatra/portfolio-site-gatsby">
           <div>Then Forked &amp; Changed by Madhav Kwatra</div>
         </a>
+      </StyledCredit>
+      <StyledCredit>
+        <Link to="/privacy">Privacy</Link>
       </StyledCredit>
     </StyledFooter>
   );

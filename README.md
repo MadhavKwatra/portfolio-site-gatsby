@@ -61,6 +61,23 @@ Thanks!
    npm run serve
    ```
 
+## 📈 Analytics
+
+- **Simple Analytics** (`gatsby-plugin-simple-analytics`) is cookieless and always on.
+- **Google Analytics 4** and **Microsoft Clarity** set cookies. Logic in `src/utils/analytics.js`, UI in `src/components/cookieBanner.js`, settings in `src/config.js` → `analytics`:
+  - **EEA, UK and Switzerland** need opt-in consent. There, an _Accept / Decline_ banner shows, and both tools load only after _Accept_.
+  - **Everywhere else**, a notice with an opt-out is enough. Both tools load at once, with a _Got it / Opt out_ notice.
+  - The region is guessed from the device time zone (a static site has no IP lookup). As a safety net by IP, Google denies analytics cookies for `consentRegions` until consent, and Clarity does the same by itself for EEA/UK/CH.
+  - Visitors can change their choice on `/privacy`.
+- To turn a tool off, empty its ID in `src/config.js`. With both IDs empty, no banner shows.
+
+One-time settings in the tools themselves:
+
+- **GA4**: Admin → Data collection and modification → **Data retention** → set event data retention to **14 months**. The default is 2 months, and the change is not retroactive. Leave **Enhanced measurement** on: it tracks page changes, outbound clicks, file downloads (resume) and scrolling.
+- **Clarity**: no extra setup is needed. Recordings are kept for 30 days and heatmaps for 13 months.
+
+> Revisit around **May 2027**, when the main duties of India's DPDP Rules start. Analytics cookies may then need consent in India too; add `'IN'` to `consentRegions` and Indian time zones to the consent check if so.
+
 ## 📄 Resume
 
 `static/resume.pdf` is generated from [`resume/resume.html`](resume/resume.html) (the `resume/` folder is not published). Edit the HTML, then print it with headless Microsoft Edge from the repo root:
