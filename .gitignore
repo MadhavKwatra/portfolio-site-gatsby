@@ -8,3 +8,6 @@ yarn-error.log
 .DS_Store
 
 .vscode/
+
+# Local scratch space: temporary screenshots, comparisons and helper scripts
+/scratch/
