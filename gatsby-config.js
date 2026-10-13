@@ -123,6 +123,9 @@ module.exports = {
         trackPageViews: true,
         events: true,
         eventsGlobal: 'sa_event',
+        // Pages without the loader (see gatsby-ssr.js). The plugin matches the
+        // path with its slashes removed.
+        ignorePages: ['phonerecapprivacy', 'phonerecapterms'],
       },
     },
   ],
