@@ -97,6 +97,19 @@ module.exports = {
     },
   ],
 
+  // Footer of the PhoneRecap legal pages. Google Play links to these URLs, so
+  // never move them.
+  phoneRecapLinks: [
+    {
+      name: 'Privacy Policy',
+      url: '/phonerecap/privacy/',
+    },
+    {
+      name: 'Terms of Use',
+      url: '/phonerecap/terms/',
+    },
+  ],
+
   colors: {
     green: '#64ffda',
     navy: '#0a192f',
