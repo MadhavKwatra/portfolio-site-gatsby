@@ -1,6 +1,6 @@
 # PhoneRecap — Privacy Policy
 
-_Last updated: 14 October 2026_
+_Last updated: 17 October 2026_
 
 PhoneRecap is an Android app made by Madhav Kwatra, an independent developer in India. It shows you a recap of how you use your phone. This policy explains what the app reads, where that data goes, and your choices.
 
@@ -18,7 +18,11 @@ With Android's **Usage access** permission, which you turn on yourself in Androi
 - which apps were open and for how long, how often you unlocked the phone, and when the screen was on;
 - how much mobile data and Wi-Fi each app used (Android's own data counters);
 - how many notifications each app showed you — only the count per app per day, never what the notifications said;
-- app names and icons of the apps you use, and which of them are still installed (only apps with a home-screen icon), so the recap and the Apps list can show them.
+- app names and icons of the apps you use, and which of them are still installed (only apps with a home-screen icon), so the recap and the Apps list can show them;
+- when apps with a home-screen icon were installed and last updated, also apps you never opened;
+- how long apps kept running in the background with an ongoing notification, for example music, navigation or a VPN — only the time, not what they did;
+- how long the screen was on while the phone was turned sideways, and how often the phone was switched off and on;
+- once a month, your phone's storage totals: total and free space, and how much space photos, videos, audio and apps take up — only the sizes, never file names or the files themselves.
 
 PhoneRecap does **not** read your messages, photos, contacts, location, browsing content, passwords, or what you type or see inside other apps.
 
@@ -34,7 +38,7 @@ Everything is stored in a small database inside the app on your phone. PhoneReca
 
 ## How long data is kept
 
-PhoneRecap keeps the days it saved until you delete them (Settings › Delete PhoneRecap's data) or uninstall the app. There is no copy anywhere else, so nothing is kept after that. We, the developer, never receive this data, so we have nothing to keep or delete.
+PhoneRecap keeps the days it saved until you delete them (Settings › Delete PhoneRecap's data) or uninstall the app. There is no copy anywhere else, so nothing is kept after that, except an export file you saved yourself. We, the developer, never receive this data, so we have nothing to keep or delete.
 
 ## Sharing
 
@@ -43,7 +47,9 @@ PhoneRecap never shares your data. You can choose to:
 - **share a recap image** through Android's share sheet — it goes only where you send it;
 - **save a recap image** to your phone's gallery (Pictures › PhoneRecap) — only when you tap Save; it stays on your phone, and PhoneRecap needs no photo or storage permission for this;
 - **get recap reminders** — if you turn them on in Settings, PhoneRecap asks Android for notification permission and schedules up to two reminders a month on your phone ("your month is ready", and on 1 December "your year is ready"); nothing is sent to us or anyone else, and you can turn them off any time;
-- **export your data** as a file — it goes only where you save or send it;
+- **get a saving alert** — if you turn on "Saving alerts" in Settings, PhoneRecap schedules one local notification for 6 days after its last save, so you hear about it if your phone stopped it from saving; each new save moves it forward, so you only see it when saving really stopped; it contains no usage numbers or app names;
+- **export your data** as a file — it goes only where you save or send it; "Save export to phone" puts it in your phone's Download › PhoneRecap folder, where it stays until you delete it, also if you uninstall PhoneRecap;
+- **import an export** — Settings › Your data › Import from a file reads only the file you pick, on your phone, and adds its saved days to PhoneRecap; nothing is uploaded;
 - **send feedback by email** — this opens your own email app; you see the message (app version, Android version, phone model) before you send it.
 
 ## If you contact us
