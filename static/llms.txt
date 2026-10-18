@@ -1,0 +1,9 @@
+# PhoneRecap
+
+> PhoneRecap turns your phone use into a private yearly and monthly story, with cards you can share. Everything stays on your phone.
+
+- Page: https://madhavkwatra.in/phonerecap/
+- Platform: Android 10 or newer (in testing on Google Play, not public yet)
+- Privacy: no internet permission, no account, no ads, no analytics; data stays on the phone
+- Privacy Policy: https://madhavkwatra.in/phonerecap/privacy/
+- Made by Madhav Kwatra, an indie developer in India: https://madhavkwatra.in
