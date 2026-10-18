@@ -6,7 +6,14 @@ import { currentRole, socialMedia } from '@config';
 // Rendered from each page's Gatsby Head export
 // https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
 
-const Seo = ({ title = null, description = null, image = null, pathname = '/' }) => {
+const Seo = ({
+  title = null,
+  description = null,
+  image = null,
+  pathname = '/',
+  schema = null,
+  noindex = false,
+}) => {
   const { site } = useStaticQuery(graphql`
     query {
       site {
@@ -55,6 +62,7 @@ const Seo = ({ title = null, description = null, image = null, pathname = '/' })
       <link rel="canonical" href={seo.url} />
 
       <meta name="description" content={seo.description} />
+      {noindex && <meta name="robots" content="noindex" />}
       <meta name="image" content={seo.image} />
 
       <meta property="og:title" content={seo.title} />
@@ -74,6 +82,14 @@ const Seo = ({ title = null, description = null, image = null, pathname = '/' })
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
+
+      {/* Optional page-specific structured data, e.g. a MobileApplication */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
     </>
   );
 };
@@ -85,4 +101,6 @@ Seo.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   pathname: PropTypes.string,
+  schema: PropTypes.object,
+  noindex: PropTypes.bool,
 };

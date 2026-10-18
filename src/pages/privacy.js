@@ -103,8 +103,7 @@ const PrivacyPage = ({ location }) => {
             <p>
               They set cookies and collect the pages you view, the site you came from, your device
               and browser, your approximate location and your clicks. Clarity also makes heatmaps
-              and replays of how the page was used. This site has no forms, and Clarity masks typed
-              text by default.
+              and replays of how the page was used. Clarity masks typed text by default.
             </p>
             <p>
               Google Analytics keeps detailed data for up to 14 months. Clarity keeps replays for 30

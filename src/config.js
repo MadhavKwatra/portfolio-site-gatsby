@@ -101,6 +101,10 @@ module.exports = {
   // never move them.
   phoneRecapLinks: [
     {
+      name: 'PhoneRecap',
+      url: '/phonerecap/',
+    },
+    {
       name: 'Privacy Policy',
       url: '/phonerecap/privacy/',
     },

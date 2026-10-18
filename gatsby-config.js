@@ -14,7 +14,11 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      // The tester thank-you page is noindex, so keep it out of the sitemap
+      options: { excludes: ['/phonerecap/thanks/'] },
+    },
     `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -125,7 +129,7 @@ module.exports = {
         eventsGlobal: 'sa_event',
         // Pages without the loader (see gatsby-ssr.js). The plugin matches the
         // path with its slashes removed.
-        ignorePages: ['phonerecapprivacy', 'phonerecapterms'],
+        ignorePages: ['phonerecap', 'phonerecapthanks', 'phonerecapprivacy', 'phonerecapterms'],
       },
     },
   ],
