@@ -30,22 +30,27 @@ GumiGumi is an Android app made by Madhav Kwatra, an independent developer in In
 - **Place search** — the text you type in the search box goes to Geoapify (OpenStreetMap data) from version 2.0, through our server, and to Google Places in version 1.0.x.
 - **Google Gemini API** — from 2.0: only place names, countries and dates (for example "Goa, 2023"), never your name or email, for the AI helpers (type-to-add, trip ideas, captions). In 1.0.x: the messages you type in the Gumi chat.
 - **Vercel** — 1.0.x only: chat messages pass through our small server there on their way to Gemini.
-- **Vexo** — 1.0.x only: anonymous app usage events (screens opened, app version, device model). Removed in 2.0.
+- **Vexo** — app usage analytics in 1.0.x: which screens you open, taps, scrolling, when typing starts and stops (not what you type), screen orientation, crash and performance data, and a random ID created for each install. It is not linked to your account, your name or your email. Session recording is turned off. If Vexo is removed in a later version, this policy will say so.
 - **Wikipedia** — from 2.0: the name of a place, through our server, to show facts about it.
 - **Sentry** — crash reports (no personal details).
 
-These services work for us and may not use your data for their own purposes. **AI note:** the free Gemini service may use what is sent to it to improve Google's products, and Google staff may review it. That is why, from 2.0, we send only place names and dates. The AI features are for people aged 18 and over.
+These services work for us and may not use your data for their own purposes. Vexo does not use it for advertising or to track you across other apps. **AI note:** the free Gemini service may use what is sent to it to improve Google's products, and Google staff may review it. That is why, from 2.0, we send only place names and dates. The AI features are for people aged 18 and over.
 
 ## What we never do
 
 - No background location tracking. No reading of your contacts, messages, microphone or other apps.
-- No selling or renting of data. No ads. No advertising or tracking tools.
+- No selling or renting of data. No ads. No advertising tools, and no tracking of you across other apps or websites.
 - No access to your photo library: you pick individual photos with Android's photo picker.
+
+## Where your data is processed
+
+Your account, places and photos are stored in India (Supabase, Mumbai). Some of the services above run outside India, mostly in the United States or the European Union: Sentry, Vexo, Mapbox, Vercel and Google (sign-in, Gemini, Places), and Geoapify. They receive only the data listed above.
 
 ## How long we keep data
 
 - **Your account and places:** until you delete them or your account.
 - **Crash reports:** 30 days in Sentry, then deleted.
+- **Usage analytics (Vexo, 1.0.x):** Vexo may keep these anonymous events indefinitely. Ask us and we will ask Vexo to delete the events from your install.
 - **Backups:** we make an encrypted backup of the database every week and keep each backup for 30 days. Data you delete disappears from all backups within 30 days.
 
 ## Your choices and rights

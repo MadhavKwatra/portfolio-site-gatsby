@@ -24,6 +24,6 @@ Send an email **from the address you used to sign in** to [madhav.kwat+gumigumi@
 
 ## What is kept
 
-Nothing personal. Crash reports (no name or email) expire after 30 days. Weekly database backups roll off within 30 days.
+Nothing linked to your account. Crash reports (no name or email) expire after 30 days. Weekly database backups roll off within 30 days. In app version 1.0.x, Vexo keeps anonymous usage events tied only to a random install ID, not to your account; ask us and we will ask Vexo to delete them.
 
 [Privacy Policy](/gumigumi/privacy/)
