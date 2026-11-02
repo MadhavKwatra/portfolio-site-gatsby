@@ -129,7 +129,16 @@ module.exports = {
         eventsGlobal: 'sa_event',
         // Pages without the loader (see gatsby-ssr.js). The plugin matches the
         // path with its slashes removed.
-        ignorePages: ['phonerecap', 'phonerecapthanks', 'phonerecapprivacy', 'phonerecapterms'],
+        ignorePages: [
+          'phonerecap',
+          'phonerecapthanks',
+          'phonerecapprivacy',
+          'phonerecapterms',
+          'gumigumiprivacy',
+          'gumigumiterms',
+          'gumigumidelete-account',
+          'gumigumisupport',
+        ],
       },
     },
   ],

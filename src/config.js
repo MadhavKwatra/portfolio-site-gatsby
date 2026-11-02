@@ -114,6 +114,27 @@ module.exports = {
     },
   ],
 
+  // Footer of the GumiGumi legal pages. Google Play links to these URLs, so never move them.
+  // The /gumigumi/ landing page comes after the app's design revamp.
+  gumiGumiLinks: [
+    {
+      name: 'Privacy Policy',
+      url: '/gumigumi/privacy/',
+    },
+    {
+      name: 'Terms of Use',
+      url: '/gumigumi/terms/',
+    },
+    {
+      name: 'Delete account',
+      url: '/gumigumi/delete-account/',
+    },
+    {
+      name: 'Support',
+      url: '/gumigumi/support/',
+    },
+  ],
+
   colors: {
     green: '#64ffda',
     navy: '#0a192f',
