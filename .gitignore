@@ -11,3 +11,7 @@ yarn-error.log
 
 # Local scratch space: temporary screenshots, comparisons and helper scripts
 /scratch/
+
+# Owner's private notes (STATUS, TASKS, JOURNAL, research, design drafts).
+# It is its own git repo. This repo is public, so it must never be committed here.
+/private/
