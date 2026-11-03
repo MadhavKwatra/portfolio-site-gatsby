@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run develop)",
+      "Bash(npm run serve)",
+      "Bash(npm run format)",
+      "Bash(node tools/checks/legal-sync.js)",
+      "Bash(node tools/checks/legal-pages.js:*)",
+      "Bash(node tools/checks/phonerecap-pages.js:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)"
+    ]
+  }
+}
