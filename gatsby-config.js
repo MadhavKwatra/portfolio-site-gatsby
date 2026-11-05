@@ -134,6 +134,7 @@ module.exports = {
           'phonerecapthanks',
           'phonerecapprivacy',
           'phonerecapterms',
+          'gumigumi',
           'gumigumiprivacy',
           'gumigumiterms',
           'gumigumidelete-account',

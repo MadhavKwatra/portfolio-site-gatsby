@@ -115,8 +115,12 @@ module.exports = {
   ],
 
   // Footer of the GumiGumi legal pages. Google Play links to these URLs, so never move them.
-  // The /gumigumi/ landing page comes after the app's design revamp.
+  // The landing page /gumigumi/ leaves itself out of its own footer.
   gumiGumiLinks: [
+    {
+      name: 'GumiGumi',
+      url: '/gumigumi/',
+    },
     {
       name: 'Privacy Policy',
       url: '/gumigumi/privacy/',

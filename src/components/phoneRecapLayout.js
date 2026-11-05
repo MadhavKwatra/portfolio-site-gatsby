@@ -8,7 +8,7 @@ import { GlobalStyle, theme } from '@styles';
 import BarlowExtraBoldItalic from '@fonts/BarlowCondensed/BarlowCondensed_800ExtraBold_Italic.ttf';
 import BarlowExtraBold from '@fonts/BarlowCondensed/BarlowCondensed_800ExtraBold.ttf';
 
-// The frame for the PhoneRecap product pages (/phonerecap/ and /phonerecap/thanks/).
+// The frame for the app product pages (/phonerecap/, /phonerecap/thanks/ and /gumigumi/).
 // Like LegalLayout it leaves out the main Layout on purpose: that one renders the
 // cookie banner, which loads Google Analytics and Clarity. Simple Analytics is
 // removed from every /phonerecap/ page in gatsby-ssr.js. These pages are tracker-free.
@@ -201,7 +201,7 @@ const Logo = () => (
   </svg>
 );
 
-const PhoneRecapLayout = ({ children, links, joinHref = '#join' }) => (
+const PhoneRecapLayout = ({ children, links, joinHref = '#join', joinLabel = 'Join the test' }) => (
   <div id="root">
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -223,7 +223,7 @@ const PhoneRecapLayout = ({ children, links, joinHref = '#join' }) => (
               <span>~/</span>Home
             </a>
             <a className="join" href={joinHref}>
-              Join the test
+              {joinLabel}
             </a>
           </nav>
         </StyledNav>
@@ -252,6 +252,7 @@ PhoneRecapLayout.propTypes = {
     }),
   ).isRequired,
   joinHref: PropTypes.string,
+  joinLabel: PropTypes.string,
 };
 
 export default PhoneRecapLayout;
