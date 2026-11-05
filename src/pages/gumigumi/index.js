@@ -3,21 +3,24 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { gumiGumiLinks } from '@config';
 import { PhoneRecapLayout, Seo } from '@components';
-import { stickerButton } from '@components/phoneRecapJoin';
 
 import appIcon from '@images/gumigumi/icon-128.png';
+import playBadge from '@images/gumigumi/google-play-badge.png';
 import mapIndia from '@images/gumigumi/map-india.jpg';
-import mapWorld from '@images/gumigumi/map-world.jpg';
-import mapStyles from '@images/gumigumi/map-styles.jpg';
+import mapDesert from '@images/gumigumi/map-desert.jpg';
+import places from '@images/gumigumi/places.jpg';
 import addPlace from '@images/gumigumi/add-place.jpg';
 import chat from '@images/gumigumi/chat.jpg';
-import welcome from '@images/gumigumi/welcome.jpg';
+import statsCard from '@images/gumigumi/stats-card.jpg';
 import shareCard from '@images/gumigumi/share-card.jpg';
 
-// The GumiGumi product page: hero, features, screens, "Your data", "Get the app", FAQ.
-// Built like /phonerecap/ (same layout, tracker-free, no JavaScript needed).
-// Text describes app version 1.0.8 (what is on Google Play). Screens are real app
-// screenshots (Dev app, 2026-11-05); the owner's photo in the tab bar is covered.
+// The GumiGumi product page: hero, features, screens, share card, "Your data", "Get the app", FAQ.
+// Same layout as /phonerecap/ (tracker-free, works without JavaScript).
+// Text describes app version 1.0.8 (what is on Google Play). Screens are real app screenshots
+// (Dev app, 2026-11-05): status bar cut off, the owner's photo in the tab bar covered, and
+// from the profile only the stats card (no face, name or email).
+// The Google Play badge is Google's official artwork: never change, recolor or crop it
+// (https://partnermarketinghub.withgoogle.com/brands/google-play/).
 
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.madhavKwatra.gumiGumiApp';
 
@@ -29,37 +32,31 @@ const SCREENS = [
     src: mapIndia,
     plain: 'Your India, on a map',
     sub: 'Every place you add, with its photo',
-    alt: 'GumiGumi India map with place markers and photo pins in Mumbai, Delhi and the north',
+    alt: 'GumiGumi map of India in a dark style, with photo pins in Mumbai and the north',
   },
   {
-    src: mapWorld,
-    plain: 'The whole world',
-    sub: 'Switch between World and India',
-    alt: 'World map in satellite style with the World and India switch at the top',
+    src: places,
+    plain: 'All your places',
+    sub: 'Countries, states and cities, with dates',
+    alt: 'Your Places list with Korea, Kuwait, Rajasthan, Afghanistan and Brazil',
   },
   {
-    src: mapStyles,
+    src: mapDesert,
     plain: 'Pick a map style',
-    sub: 'Satellite, light, terrain and game-inspired styles',
-    alt: 'Map style sheet with satellite, standard, terrain and custom map styles',
+    sub: 'Satellite, terrain and game-inspired styles',
+    alt: 'The same India map in a sandy desert style',
   },
   {
     src: addPlace,
     plain: 'Add a place in seconds',
     sub: 'Search, tap, done',
-    alt: 'Add a City in India sheet with a place search box',
+    alt: 'Add a City in India sheet with a place search box over the map',
   },
   {
     src: chat,
     plain: 'Ask Gumi',
     sub: 'An AI travel helper, powered by Google Gemini',
-    alt: 'Gumi chat screen with suggested questions like cheap flights and train travel tips',
-  },
-  {
-    src: welcome,
-    plain: 'Sign in with Google',
-    sub: 'Your places are saved to your account',
-    alt: 'Welcome screen: Welcome to GumiGumi, your personal travel companion',
+    alt: 'Gumi chat screen with suggested questions about flights, trains and long weekends',
   },
 ];
 
@@ -137,13 +134,75 @@ const IconNoAds = icon(
 );
 const IconTrash = icon(<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" />);
 
-// GumiGumi brand colors (from the app) on top of the shared product-page tokens
+// GumiGumi brand colors (from the app)
 const StyledBrand = styled.div`
-  --tomato: #10b981;
-  --lime: #6ee7b7;
-  --sun: #fdf3d6;
-  --cream2: #d1fae5;
+  --gumi: #10b981;
+  --gumi-soft: #6ee7b7;
+  --polaroid: #fdf3d6;
+  --soft-shadow: 0 28px 50px -18px rgba(0, 0, 0, 0.75);
 `;
+
+// Official badge. The PNG already has the clear space Google asks for around the badge.
+const StyledBadge = styled.a`
+  display: inline-block;
+  line-height: 0;
+  border-radius: 10px;
+
+  img {
+    display: block;
+    width: auto;
+    height: 72px;
+
+    @media (max-width: 480px) {
+      height: 64px;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: none;
+  }
+`;
+
+const PlayBadge = () => (
+  <StyledBadge href={PLAY_URL} target="_blank" rel="noopener noreferrer">
+    <img src={playBadge} alt="Get it on Google Play" width="186" height="72" />
+  </StyledBadge>
+);
+
+// The screen in a plain phone frame. Screenshots are 600 x 1240 (status bar cut off).
+const StyledPhone = styled.div`
+  width: var(--pw, 180px);
+  aspect-ratio: 600 / 1240;
+  overflow: hidden;
+  border: calc(var(--pw, 180px) * 0.035) solid #05070a;
+  border-radius: calc(var(--pw, 180px) * 0.13);
+  background-color: #05070a;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    var(--soft-shadow);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: calc(var(--pw, 180px) * 0.1);
+  }
+`;
+
+const Phone = ({ src, alt, eager = false }) => (
+  <StyledPhone className="phone">
+    <img src={src} alt={alt} width="600" height="1240" loading={eager ? 'eager' : 'lazy'} />
+  </StyledPhone>
+);
+
+Phone.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  eager: PropTypes.bool,
+};
 
 const StyledHero = styled.section`
   container-type: inline-size;
@@ -153,7 +212,7 @@ const StyledHero = styled.section`
 
   .in {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 48px;
     align-items: center;
   }
@@ -188,7 +247,7 @@ const StyledHero = styled.section`
     line-height: 1;
 
     span {
-      color: var(--tomato);
+      color: var(--gumi);
     }
   }
 
@@ -219,101 +278,66 @@ const StyledHero = styled.section`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px 22px;
-    margin-top: 34px;
+    gap: 6px 18px;
+    margin: 28px 0 0 -10px;
   }
 
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 7px 14px 7px 11px;
-    border: 2.5px solid var(--ink);
-    border-radius: 999px;
-    background-color: var(--lime);
-    color: var(--ink);
+  .facts {
+    color: var(--slate);
     font-family: var(--font-mono);
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-
-    i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background-color: var(--ink);
-    }
+    font-size: 13px;
   }
 
-  .play-btn {
-    ${stickerButton};
-    --shadow: var(--cream2);
-  }
-
+  /* Art: the map phone in front, the Polaroid share card behind it,
+     and the stats card from the profile on top. */
   .art {
     position: relative;
     width: 100%;
-    max-width: 440px;
+    max-width: 460px;
     margin-left: auto;
-    aspect-ratio: 1 / 1.14;
+    aspect-ratio: 1 / 1.15;
     container-type: inline-size;
 
-    .p {
+    &:before {
+      content: '';
       position: absolute;
-      width: 44%;
-    }
-    .cut {
-      --pw: 44cqw;
-      box-shadow: 9px 9px 0 var(--cream2);
-    }
-    .p1 {
-      left: 7%;
-      top: 9%;
-      transform: rotate(-8deg);
-    }
-    .p3 {
-      right: 7%;
-      top: 11%;
-      transform: rotate(7deg);
-    }
-    .p2 {
-      left: 28%;
-      top: 0;
-      z-index: 2;
-      transform: rotate(-1deg);
+      inset: 12% 8% 6% 14%;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(16, 185, 129, 0.35), transparent);
+      filter: blur(10px);
     }
   }
 
-  .badge {
+  .art .phone {
+    --pw: 50cqw;
+    position: absolute;
+    z-index: 2;
+    left: 26%;
+    top: 2%;
+  }
+
+  .polaroid {
+    position: absolute;
+    z-index: 1;
+    right: -2%;
+    top: 14%;
+    width: 38cqw;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--soft-shadow);
+    transform: rotate(7deg);
+  }
+
+  .stats {
     position: absolute;
     z-index: 3;
-    left: 5%;
-    bottom: 6%;
-    padding: 6px 12px 5px;
-    border: 3px solid var(--ink);
+    left: 0;
+    bottom: 0;
+    width: 46cqw;
+    height: auto;
     border-radius: 14px;
-    background-color: var(--sun);
-    color: var(--ink);
-    box-shadow: 5px 5px 0 var(--ink);
-    transform: rotate(-7deg);
-
-    .num {
-      display: block;
-      font-family: var(--display);
-      font-size: clamp(28px, 10cqw, 44px);
-      font-weight: 800;
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-    }
-    .lbl {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+    box-shadow: var(--soft-shadow);
+    transform: rotate(-4deg);
   }
 
   @container (max-width: 620px) {
@@ -327,39 +351,6 @@ const StyledHero = styled.section`
     }
   }
 `;
-
-// Frameless cut-out: the screen itself as a sticker. Screenshots are 720 x 1544.
-const StyledCut = styled.div`
-  position: relative;
-  width: var(--pw, 160px);
-  aspect-ratio: ${({ $ratio }) => $ratio};
-  overflow: hidden;
-  border: 4px solid var(--ink);
-  border-radius: calc(var(--pw, 160px) * 0.07);
-  background-color: #000;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
-`;
-
-const Cut = ({ src, alt, eager = false, width = 540, height = 1158 }) => (
-  <StyledCut className="cut" $ratio={`${width} / ${height}`}>
-    <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} />
-  </StyledCut>
-);
-
-Cut.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  eager: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
 
 const StyledCards = styled.section`
   .lead {
@@ -401,10 +392,9 @@ const StyledCards = styled.section`
     place-items: center;
     width: 46px;
     height: 46px;
-    border: 2.5px solid var(--ink);
     border-radius: 12px;
-    background-color: var(--lime);
-    color: var(--ink);
+    background-color: rgba(16, 185, 129, 0.15);
+    color: var(--gumi-soft);
 
     @media (max-width: 480px) {
       width: 40px;
@@ -416,7 +406,7 @@ const StyledCards = styled.section`
       height: 24px;
       fill: none;
       stroke: currentColor;
-      stroke-width: 2.2;
+      stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -436,9 +426,9 @@ const StyledCards = styled.section`
 const StyledScreens = styled.section`
   .strip {
     display: flex;
-    gap: 26px;
+    gap: 32px;
     margin: 0 -4px;
-    padding: 6px 14px 26px 4px;
+    padding: 6px 16px 34px 4px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: thin;
@@ -447,26 +437,25 @@ const StyledScreens = styled.section`
 
   figure {
     flex: 0 0 auto;
-    width: 160px;
+    width: 190px;
     margin: 0;
     scroll-snap-align: start;
 
     @media (max-width: 480px) {
-      width: 138px;
+      width: 160px;
     }
   }
 
-  .cut {
-    --pw: 160px;
-    box-shadow: 8px 8px 0 var(--cream2);
+  .phone {
+    --pw: 190px;
 
     @media (max-width: 480px) {
-      --pw: 138px;
+      --pw: 160px;
     }
   }
 
   figcaption {
-    margin-top: 18px;
+    margin-top: 20px;
     color: var(--lightest-slate);
     font-size: 15px;
     line-height: 1.35;
@@ -502,9 +491,8 @@ const StyledShare = styled.section`
     width: 100%;
     max-width: 300px;
     height: auto;
-    border: 4px solid var(--ink);
-    border-radius: 14px;
-    box-shadow: 9px 9px 0 var(--cream2);
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
     transform: rotate(3deg);
 
     @media (max-width: 768px) {
@@ -524,42 +512,40 @@ const StyledGet = styled.section`
   .box {
     max-width: 640px;
     margin: 0 auto;
-    padding: 40px 28px;
-    border: 3px solid var(--ink);
+    padding: 40px 28px 32px;
     border-radius: 18px;
-    background-color: var(--sun);
-    color: var(--ink);
-    box-shadow: 8px 8px 0 var(--cream2);
+    background-color: var(--light-navy);
+    background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.22), transparent 70%);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
 
     @media (max-width: 480px) {
-      padding: 32px 18px;
+      padding: 32px 18px 26px;
     }
+  }
+
+  .box-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 18px;
+    border-radius: 13px;
+    background-color: #fff;
   }
 
   h2 {
     margin: 0 0 12px;
-    color: var(--ink);
-    font-size: clamp(40px, 8vw, 60px);
+    color: var(--lightest-slate);
+    font-size: clamp(30px, 6vw, 42px);
   }
 
   p {
-    margin: 0 auto 26px;
+    margin: 0 auto 18px;
     max-width: 460px;
-    color: #3d3a33;
-  }
-
-  .play-btn {
-    ${stickerButton};
+    color: var(--light-slate);
   }
 
   .small {
-    margin: 22px auto 0;
+    margin: 14px auto 0;
     font-size: 15px;
-
-    a {
-      color: var(--ink);
-      text-decoration: underline;
-    }
   }
 `;
 
@@ -615,6 +601,12 @@ const StyledFaq = styled.section`
     margin-top: 26px;
     font-size: 16px;
   }
+
+  .tm {
+    margin-top: 10px;
+    color: var(--slate);
+    font-size: 13px;
+  }
 `;
 
 const Card = ({ Icon, title, text }) => (
@@ -631,17 +623,6 @@ Card.propTypes = {
   Icon: PropTypes.elementType.isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-};
-
-const PlayLink = ({ children }) => (
-  <a className="play-btn" href={PLAY_URL} target="_blank" rel="noopener noreferrer">
-    {children}
-    <span className="sr-only"> (opens Google Play in a new tab)</span>
-  </a>
-);
-
-PlayLink.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 const GumiGumiPage = () => (
@@ -665,28 +646,27 @@ const GumiGumiPage = () => (
             </h1>
             <p className="one">{ONE_LINER}</p>
             <div className="acts">
-              <span className="status">
-                <i aria-hidden="true" />
-                Android · on Google Play
-              </span>
-              <PlayLink>Get it on Google Play</PlayLink>
+              <PlayBadge />
+              <span className="facts">Android · No ads · No location tracking</span>
             </div>
           </div>
 
           <div className="art">
-            <div className="p p1">
-              <Cut src={mapWorld} alt={SCREENS[1].alt} eager />
-            </div>
-            <div className="p p3">
-              <Cut src={chat} alt={SCREENS[4].alt} eager />
-            </div>
-            <div className="p p2">
-              <Cut src={mapIndia} alt={SCREENS[0].alt} eager />
-            </div>
-            <div className="badge" aria-hidden="true">
-              <span className="num">36</span>
-              <span className="lbl">states &amp; UTs to fill</span>
-            </div>
+            <img
+              className="polaroid"
+              src={shareCard}
+              alt="Polaroid share card with a map of India and travel stats"
+              width="420"
+              height="629"
+            />
+            <Phone src={mapIndia} alt={SCREENS[0].alt} eager />
+            <img
+              className="stats"
+              src={statsCard}
+              alt="Your Travel Stats card: 4.10% of the world explored, 13.89% of India, 8 countries, 5 states and UTs"
+              width="480"
+              height="471"
+            />
           </div>
         </div>
       </StyledHero>
@@ -728,7 +708,7 @@ const GumiGumiPage = () => (
         <div className="strip" tabIndex="0" role="region" aria-label="App screens, scroll sideways">
           {SCREENS.map(({ src, alt, plain, sub }) => (
             <figure key={plain}>
-              <Cut src={src} alt={alt} />
+              <Phone src={src} alt={alt} />
               <figcaption>
                 {plain}
                 <small>{sub}</small>
@@ -791,13 +771,12 @@ const GumiGumiPage = () => (
 
       <StyledGet aria-labelledby="h-get" id="get">
         <div className="box">
-          <h2 className="disp" id="h-get">
-            Start your map
-          </h2>
+          <img className="box-icon" src={appIcon} alt="GumiGumi app icon" width="56" height="56" />
+          <h2 id="h-get">Start your map</h2>
           <p>
             GumiGumi is on Google Play for Android. Sign in with Google and add your first place.
           </p>
-          <PlayLink>Get it on Google Play</PlayLink>
+          <PlayBadge />
           <p className="small">
             Questions or ideas? See <a href="/gumigumi/support/">Help and Support</a>.
           </p>
@@ -821,6 +800,7 @@ const GumiGumiPage = () => (
           <a href="/gumigumi/terms/">Terms of Use</a> and{' '}
           <a href="/gumigumi/delete-account/">Delete your account</a>.
         </p>
+        <p className="tm">Google Play and the Google Play logo are trademarks of Google LLC.</p>
       </StyledFaq>
     </StyledBrand>
   </PhoneRecapLayout>
@@ -838,6 +818,7 @@ const appSchema = {
   description: ONE_LINER,
   url: 'https://madhavkwatra.in/gumigumi/',
   installUrl: PLAY_URL,
+  image: 'https://madhavkwatra.in/gumigumi-og.jpg',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -855,6 +836,7 @@ export const Head = ({ location }) => (
   <Seo
     title="GumiGumi — every place you’ve been, on your own map"
     description={ONE_LINER}
+    image="/gumigumi-og.jpg"
     pathname={location.pathname}
     schema={appSchema}
   />
