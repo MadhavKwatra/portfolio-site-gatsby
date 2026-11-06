@@ -1,7 +1,7 @@
 ---
 date: '2025-04-30'
 title: 'GumiGumi'
-external: 'https://play.google.com/store/apps/details?id=com.madhavKwatra.gumiGumiApp'
+external: '/gumigumi/'
 tech:
   - React Native
   - Expo

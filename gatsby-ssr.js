@@ -7,7 +7,7 @@
 // App legal pages (e.g. the PhoneRecap privacy policy) promise no trackers, so they
 // ship without the Simple Analytics loader that gatsby-plugin-simple-analytics
 // adds to every page. Keep `ignorePages` in gatsby-config.js in sync.
-const TRACKER_FREE_PATHS = ['/phonerecap/'];
+const TRACKER_FREE_PATHS = ['/phonerecap/', '/gumigumi/'];
 
 exports.onPreRenderHTML = ({ pathname, getHeadComponents, replaceHeadComponents }) => {
   if (!TRACKER_FREE_PATHS.some(path => pathname.startsWith(path))) {
