@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { phoneRecapLinks } from '@config';
 import { PhoneRecapLayout, Seo } from '@components';
-import { DM_LINKS, JoinBox, TesterMail, Why, stickerButton } from '@components/phoneRecapJoin';
+import { JoinBox, PLAY_LEGAL, PLAY_URL, PlayBadge, TesterMail } from '@components/phoneRecapJoin';
 
 import buddyIcon from '@images/phonerecap/buddy-icon-128.png';
 import storyTotal from '@images/phonerecap/story-total.jpg';
@@ -14,8 +14,8 @@ import storyUnlocks from '@images/phonerecap/story-unlocks.jpg';
 import yourPrivacy from '@images/phonerecap/your-privacy.jpg';
 import homeScreen from '@images/phonerecap/home.jpg';
 
-// The PhoneRecap product page: hero, "Private by design", screens, "Join the test"
-// (3 steps, Gmail form in step 1) and FAQ. Approved mock: PhoneRecap repo,
+// The PhoneRecap product page: hero, "Private by design", screens, "Get PhoneRecap" (Google Play
+// badge; it replaced the tester form on 2026-11-07 when the app went live) and FAQ. Approved mock: PhoneRecap repo,
 // docs/design/prototypes/designs/portfolio-mock/page.html (layout A, join A).
 // Tracker-free and works without JavaScript: the form is a plain Netlify POST.
 
@@ -70,6 +70,7 @@ const FAQ = [
     'What does it read?',
     'Android’s Usage access: which apps were open and for how long, unlocks, notification counts, and data use per app. Never messages, photos, contacts, location or what you type.',
   ],
+  ['Where do I get it?', 'On Google Play. It’s free, for Android 10 or newer.'],
   [
     'Is it like a year-in-review for my phone?',
     'Yes: a yearly and monthly story with cards you can share.',
@@ -234,9 +235,14 @@ const StyledHero = styled.section`
     }
   }
 
-  .join-btn {
-    ${stickerButton};
-    --shadow: var(--cream2);
+  .play-badge {
+    display: inline-block;
+    line-height: 0;
+
+    img {
+      display: block;
+      height: auto;
+    }
   }
 
   .art {
@@ -500,6 +506,26 @@ const StyledJoin = styled.section`
   && {
     padding: 64px 0;
   }
+
+  .get {
+    margin: 22px 0 8px;
+  }
+
+  .play-badge {
+    display: inline-block;
+    line-height: 0;
+
+    img {
+      display: block;
+      height: auto;
+    }
+  }
+
+  .legal-badge {
+    margin-top: 14px;
+    font-size: 12px;
+    opacity: 0.75;
+  }
 `;
 
 const StyledFaq = styled.section`
@@ -600,11 +626,9 @@ const PhoneRecapPage = () => (
           <div className="acts">
             <span className="status">
               <i aria-hidden="true" />
-              Android · in testing
+              On Google Play · Android 10+
             </span>
-            <a className="join-btn" href="#join">
-              Join the test
-            </a>
+            <PlayBadge width={200} />
           </div>
         </div>
 
@@ -693,113 +717,27 @@ const PhoneRecapPage = () => (
       <p className="sample-note">Screens show sample data (Aarav’s year), not a real person.</p>
     </StyledScreens>
 
-    <StyledJoin aria-labelledby="h-join">
-      <JoinBox id="join">
+    <StyledJoin aria-labelledby="h-get">
+      {/* #join kept for old links from tester posts */}
+      <span id="join" aria-hidden="true" />
+      <JoinBox id="get">
         <p className="kicker">
-          <span className="need">12 testers needed</span>Android 10 or newer
+          <span className="need">Free</span>Android 10 or newer · No account
         </p>
-        <h2 className="title disp" id="h-join">
-          Join the test
+        <h2 className="title disp" id="h-get">
+          Get PhoneRecap
         </h2>
         <p className="sub">
-          Help PhoneRecap reach Google Play. You get the app early; I get to know what breaks.
+          Your 2026 recap unlocks on 1 December. Install it now, so it can save your days until
+          then.
         </p>
-
-        <ol className="steps">
-          <li>
-            <span className="n" aria-hidden="true">
-              1
-            </span>
-            <div>
-              <h3>Send me your Gmail</h3>
-              {/* Netlify Forms: detected at build from this static HTML. The honeypot
-                  field is hidden from people; bots that fill it are dropped. */}
-              <form
-                name="phonerecap-testers"
-                method="POST"
-                action="/phonerecap/thanks/"
-                data-netlify="true"
-                // Netlify's own attribute; React passes it through to the HTML as-is
-                // eslint-disable-next-line react/no-unknown-property
-                netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="phonerecap-testers" />
-                <p hidden>
-                  <label>
-                    Leave this empty: <input name="bot-field" tabIndex="-1" autoComplete="off" />
-                  </label>
-                </p>
-                <label className="field-label" htmlFor="tester-email">
-                  Gmail of the Google account on your phone
-                </label>
-                <input
-                  className="input"
-                  id="tester-email"
-                  type="email"
-                  name="email"
-                  required
-                  autoComplete="email"
-                  inputMode="email"
-                  spellCheck="false"
-                  placeholder="name@gmail.com"
-                  aria-describedby="tester-hint tester-pnote"
-                />
-                <p className="hint" id="tester-hint">
-                  Google Play adds testers by this address, so use the one signed in on your Android
-                  phone.
-                </p>
-                <label className="check">
-                  <input type="checkbox" name="consent" value="yes" required />
-                  <span>I agree that this email is used only to add me to the PhoneRecap test</span>
-                </label>
-                <button className="button" type="submit">
-                  Send
-                </button>
-                <p className="pnote" id="tester-pnote">
-                  Your email is used only to add you to the PhoneRecap test on Google Play. Only
-                  Madhav sees it. It is stored by Netlify (this site’s host, USA) and added to the
-                  tester list in Google Play Console. No marketing, no newsletter, and this page has
-                  no trackers. It is deleted within 30 days after the public launch, or sooner if
-                  you ask: <TesterMail />.
-                </p>
-              </form>
-              <p className="note">
-                Prefer to chat? DM me “TEST” on{' '}
-                {DM_LINKS.map(({ name, url }, i) => (
-                  <React.Fragment key={name}>
-                    {i > 0 && ' · '}
-                    <a href={url} target="_blank" rel="noopener noreferrer">
-                      {name}
-                      <span className="sr-only"> (opens in a new tab)</span>
-                    </a>
-                  </React.Fragment>
-                ))}
-                .
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="n" aria-hidden="true">
-              2
-            </span>
-            <div>
-              <h3>Opt in on Google Play</h3>
-              <p>
-                I add you to the test and email you the Google Play link. Tap it and choose “Become
-                a tester”.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span className="n" aria-hidden="true">
-              3
-            </span>
-            <div>
-              <h3>Install and keep it 14 days</h3>
-              <p>Open it every few days. Tell me what breaks.</p>
-            </div>
-          </li>
-        </ol>
-        <Why />
+        <div className="get">
+          <PlayBadge width={260} />
+        </div>
+        <p className="note">
+          Want new features before everyone else? Email <TesterMail /> and I’ll add you to the test.
+        </p>
+        <p className="legal-badge">{PLAY_LEGAL}</p>
       </JoinBox>
     </StyledJoin>
 
@@ -825,8 +763,7 @@ const PhoneRecapPage = () => (
 
 export default PhoneRecapPage;
 
-// https://schema.org/MobileApplication. No ratings and no install URL until the
-// Google Play page is public.
+// https://schema.org/MobileApplication. Live on Google Play since 2026-11-07; no ratings yet.
 const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'MobileApplication',
@@ -835,6 +772,8 @@ const appSchema = {
   applicationCategory: 'LifestyleApplication',
   description: ONE_LINER,
   url: 'https://madhavkwatra.in/phonerecap/',
+  installUrl: PLAY_URL,
+  downloadUrl: 'https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap',
   image: 'https://madhavkwatra.in/phonerecap-og.jpg',
   offers: {
     '@type': 'Offer',

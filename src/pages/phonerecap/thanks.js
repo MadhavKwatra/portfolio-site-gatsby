@@ -2,19 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import { phoneRecapLinks } from '@config';
 import { PhoneRecapLayout, Seo } from '@components';
-import { JoinBox, TesterMail, Why } from '@components/phoneRecapJoin';
+import { JoinBox, PLAY_LEGAL, PlayBadge, TesterMail } from '@components/phoneRecapJoin';
 
-// Where the tester form on /phonerecap/ lands after Netlify stores the POST.
-// It never shows the email that was sent.
+// Was the tester form's thank-you page (until 2026-11-07). The URL stays (CLAUDE.md rule); old
+// links now land on "the test is over, it's on Google Play".
 
 const StyledThanks = styled.section`
   && {
     padding: 40px 0 64px;
   }
+
+  .get {
+    margin: 18px 0 6px;
+  }
+
+  .play-badge {
+    display: inline-block;
+    line-height: 0;
+
+    img {
+      display: block;
+      height: auto;
+    }
+  }
 `;
 
 const PhoneRecapThanksPage = () => (
-  <PhoneRecapLayout links={phoneRecapLinks} joinHref="/phonerecap/#join">
+  <PhoneRecapLayout links={phoneRecapLinks} joinHref="/phonerecap/#get">
     <StyledThanks aria-labelledby="h-thanks">
       <JoinBox>
         <span className="tick" aria-hidden="true">
@@ -23,33 +37,20 @@ const PhoneRecapThanksPage = () => (
           </svg>
         </span>
         <h1 className="title disp" id="h-thanks">
-          Thanks! You’re on the list.
+          Thanks! The test is done.
         </h1>
-        <p className="sub">Here is what happens next:</p>
-        <ol className="nexts">
-          <li>
-            <span>
-              <b>I add you to the tester list</b> in Google Play Console, usually within a few days.
-            </span>
-          </li>
-          <li>
-            <span>
-              <b>You get the Google Play link</b> by email when the test opens. Tap it and choose
-              “Become a tester”.
-            </span>
-          </li>
-          <li>
-            <span>
-              <b>Install PhoneRecap and keep it 14 days.</b> Open it every few days. Tell me what
-              breaks.
-            </span>
-          </li>
-        </ol>
-        <p className="pnote">
-          Changed your mind? Email <TesterMail /> and I remove you. Your email is deleted within 30
-          days after the public launch.
+        <p className="sub">
+          PhoneRecap passed Google Play’s test and is now live for everyone, thanks to the people
+          who tested it. Testers keep the same app and their saved days.
         </p>
-        <Why />
+        <div className="get">
+          <PlayBadge width={240} />
+        </div>
+        <p className="pnote">
+          Signed up as a tester? Your email is deleted within 30 days after the launch (7 Nov 2026),
+          or sooner if you ask: <TesterMail />.
+        </p>
+        <p className="pnote">{PLAY_LEGAL}</p>
         <div className="back">
           <a className="button" href="/phonerecap/">
             Back to PhoneRecap

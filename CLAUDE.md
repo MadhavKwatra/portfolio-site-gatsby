@@ -32,7 +32,7 @@ This repo is **public** (a fork of bchiang7/v4). Never commit private notes, pri
 - `content/legal/phonerecap/*.md` is an exact copy of `docs/legal/*.md` in the PhoneRecap app repo (`../phone-wrapped-app`). Never edit it here; recopy, then run `node tools/checks/legal-sync.js`.
 - All `/phonerecap/*` pages stay tracker-free: own layouts with no cookie banner, Simple Analytics removed in `gatsby-ssr.js` (`TRACKER_FREE_PATHS`) and `ignorePages` in `gatsby-config.js`. Keep both lists in sync.
 - Links into and out of these pages are plain `<a>`, never Gatsby `Link`.
-- The tester form uses Netlify Forms. Form detection must stay on in Netlify, or the POST returns 404 and sign-ups are lost. Proof that it works: Netlify removes `data-netlify` from the served HTML. Deploy previews add a Netlify review toolbar; it is not a site tracker.
+- PhoneRecap is live on Google Play (2026-11-07): `/phonerecap/` shows Google's official badge (`src/images/phonerecap/google-play-badge-en.png`, unchanged) linking to Play with a `referrer` tag, plus Google's legal line. The tester form (Netlify Forms) was removed then; its stored sign-ups must be deleted in Netlify by 2026-12-07 (promise on the page). Deploy previews add a Netlify review toolbar; it is not a site tracker.
 - After any change there, run the browser checks on the local build (and on the live site after deploy):
   `npm install --prefix tools/checks` once, then `node tools/checks/legal-pages.js` and `node tools/checks/phonerecap-pages.js` (optional args: base URL, screenshot folder).
 

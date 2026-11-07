@@ -1,6 +1,7 @@
 // Usage: node tools/checks/phonerecap-pages.js [baseUrl] [shotDir]
 // Checks /phonerecap/ and /phonerecap/thanks/: no outside requests, no cookies, no
-// console errors, no sideways scroll, images load, form markup, readable without JS.
+// console errors, no sideways scroll, images load, Google Play badge link (no tester form since
+// 2026-11-07), readable without JS.
 // Needs Microsoft Edge and `npm install` in tools/checks. Screenshots go to the
 // git-ignored scratch/screenshots/ unless shotDir is given.
 const fs = require('fs');
@@ -11,13 +12,15 @@ const repo = path.resolve(__dirname, '../..');
 const [base = 'http://localhost:9000', shotDir = path.join(repo, 'scratch/screenshots')] =
   process.argv.slice(2);
 fs.mkdirSync(shotDir, { recursive: true });
+const PLAY_LEGAL_TEXT = 'Google Play and the Google Play logo are trademarks of Google LLC.';
+const PLAY_ID = 'play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap';
 const PAGES = [
   {
     url: '/phonerecap/',
     name: 'landing',
-    mustSee: ['Join the test', 'Private by design', 'Questions'],
+    mustSee: ['Get PhoneRecap', 'Private by design', 'Questions', PLAY_LEGAL_TEXT],
   },
-  { url: '/phonerecap/thanks/', name: 'thanks', mustSee: ['You’re on the list'] },
+  { url: '/phonerecap/thanks/', name: 'thanks', mustSee: ['The test is done', PLAY_LEGAL_TEXT] },
 ];
 
 let failed = false;
@@ -92,34 +95,18 @@ const check = (ok, label) => {
         );
         check(noAlt === 0, `${tag}: every image has alt`);
 
-        if (p.name === 'landing') {
-          const form = await page.evaluate(() => {
-            const f = document.querySelector('form[name="phonerecap-testers"]');
-            if (!f) {
-              return null;
-            }
-            return {
-              method: f.method,
-              action: f.getAttribute('action'),
-              netlify: f.getAttribute('data-netlify'),
-              formName: f.querySelector('input[name="form-name"]')?.value,
-              emailRequired: f.querySelector('input[name="email"]')?.required,
-              consentRequired: f.querySelector('input[name="consent"]')?.required,
-              honeypotHidden: f.querySelector('input[name="bot-field"]')?.offsetParent === null,
-            };
-          });
-          check(
-            form &&
-              form.method === 'post' &&
-              form.action === '/phonerecap/thanks/' &&
-              form.netlify === 'true' &&
-              form.formName === 'phonerecap-testers' &&
-              form.emailRequired &&
-              form.consentRequired &&
-              form.honeypotHidden,
-            `${tag}: form markup ${JSON.stringify(form)}`,
-          );
-        }
+        const play = await page.evaluate(id => {
+          const links = [...document.querySelectorAll('a.play-badge')];
+          return {
+            n: links.length,
+            ok: links.every(
+              a => a.href.includes(id) && a.querySelector('img[alt="Get it on Google Play"]'),
+            ),
+            forms: document.querySelectorAll('form').length,
+          };
+        }, PLAY_ID);
+        check(play.n > 0 && play.ok, `${tag}: Google Play badge links ${JSON.stringify(play)}`);
+        check(play.forms === 0, `${tag}: no forms (tester form removed)`);
 
         await page.screenshot({
           path: path.join(shotDir, `phonerecap-${p.name}-${w}-js${js ? 'on' : 'off'}.png`),
