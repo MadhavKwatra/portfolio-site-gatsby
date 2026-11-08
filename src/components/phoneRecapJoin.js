@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import playBadge from '@images/phonerecap/google-play-badge-en.png';
 
-// Shared pieces of the PhoneRecap "Join the test" box, used on /phonerecap/ and
-// /phonerecap/thanks/. Texts come from the approved mock (PhoneRecap repo,
+// Shared pieces of the PhoneRecap box ("Join the test" until 2026-11-07, now "Get PhoneRecap"),
+// used on /phonerecap/ and /phonerecap/thanks/. Texts come from the approved mock (PhoneRecap repo,
 // docs/design/prototypes/designs/portfolio-mock/page.html, layout A + join A).
 
 export const TESTER_MAIL = 'madhav.kwat+phonerecap@gmail.com';
@@ -382,3 +384,25 @@ export const Why = () => (
 );
 
 export const TesterMail = () => <a href={`mailto:${TESTER_MAIL}`}>{TESTER_MAIL}</a>;
+
+// Live on Google Play since 2026-11-07. The referrer tag lets Play Console count installs from this site
+// (no tracker on the page: Play reads it after the install).
+export const PLAY_URL =
+  'https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap&referrer=utm_source%3Dportfolio%26utm_medium%3Dweb%26utm_campaign%3Dlaunch';
+export const PLAY_LEGAL = 'Google Play and the Google Play logo are trademarks of Google LLC.';
+
+// Google's official badge file, unchanged (its clear space is inside the image).
+export const PlayBadge = ({ width = 220 }) => (
+  <a className="play-badge" href={PLAY_URL}>
+    <img
+      src={playBadge}
+      alt="Get it on Google Play"
+      width={width}
+      height={Math.round((width * 250) / 646)}
+      // The site's global img rules stretch images; keep the badge at its own size.
+      style={{ width: `${width}px`, maxWidth: '100%', height: 'auto' }}
+    />
+  </a>
+);
+
+PlayBadge.propTypes = { width: PropTypes.number };

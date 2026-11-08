@@ -15,51 +15,45 @@
 
 ![demo](https://github.com/MadhavKwatra/portfolio-site-gatsby/blob/main/src/images/demo.png?raw=true)
 
-## 🚨 Forking this repo (please read!)
+## 🙏 Credit
 
-Yes, you can fork this repo. Please give proper credit to the original author by linking back to [brittanychiang.com](https://brittanychiang.com). Better would be fork this directly from their Repo. Or just use mine. As you wish.
+The design started from [Brittany Chiang's v4](https://github.com/bchiang7/v4). If you fork this repo, please credit her by linking back to [brittanychiang.com](https://brittanychiang.com), or fork her repo directly.
 
-Thanks!
+## 🛠 Set up
 
-## 🛠 Installation & Set Up
+1. Use the Node version in `.nvmrc` (22.13.0), for example with [NVM](https://github.com/nvm-sh/nvm): `nvm install`
+2. Install dependencies: `npm install`
+3. Start the dev server: `npm start` (http://localhost:8000)
 
-1. Install the Gatsby CLI
+## 🚀 Production build
 
-   ```sh
-   npm install -g gatsby-cli
-   ```
+```sh
+npm run build   # static build into public/
+npm run serve   # preview it at http://localhost:9000
+```
 
-2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
+Netlify deploys `main` to [madhavkwatra.in](https://madhavkwatra.in) and builds a deploy preview for each pull request.
 
-   ```sh
-   nvm install
-   ```
+## 🗂 Where things are
 
-3. Install dependencies
+- `content/`: projects (`featured/`, `projects/`), jobs (`jobs/`) and the PhoneRecap legal text (`legal/phonerecap/`)
+- `src/components/sections/`: home page sections. `src/pages/`: pages. `src/config.js`: socials, nav and analytics settings
+- `resume/resume.html`: source of `static/resume.pdf` (see Resume below)
+- `tools/checks/`: checks for the PhoneRecap pages (see below)
+- `CLAUDE.md`: working rules for Claude Code in this repo
 
-   ```sh
-   npm install
-   ```
+## ✅ Checks
 
-4. Start the development server
+- **Git hooks (Husky):** pre-commit runs Prettier and ESLint on staged files. Pre-push checks the PhoneRecap legal text, then runs `npm run build` unless only docs or tools changed. Skip once with `SKIP_PREPUSH=1 git push`.
+- **PhoneRecap legal text:** `node tools/checks/legal-sync.js` checks that `content/legal/phonerecap/*.md` matches the app repo (`../phone-wrapped-app`, or set `PHONERECAP_APP_REPO`). Google Play links to these pages, so the text must stay exact.
+- **PhoneRecap pages in a browser** (needs Microsoft Edge): run `npm install --prefix tools/checks` once, then `npm run build && npm run serve`, and in another terminal:
 
-   ```sh
-   npm start
-   ```
+  ```sh
+  node tools/checks/legal-pages.js        # privacy + terms: same text, no trackers, no cookies
+  node tools/checks/phonerecap-pages.js   # /phonerecap/ + /thanks/: images, form, no trackers
+  ```
 
-## 🚀 Building and Running for Production
-
-1. Generate a full static production build
-
-   ```sh
-   npm run build
-   ```
-
-1. Preview the site as it will appear once deployed
-
-   ```sh
-   npm run serve
-   ```
+  Both take an optional base URL (default `http://localhost:9000`) and save screenshots to `scratch/screenshots/`.
 
 ## 📈 Analytics
 

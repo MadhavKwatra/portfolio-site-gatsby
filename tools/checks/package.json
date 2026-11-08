@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-checks",
+  "private": true,
+  "description": "Browser checks for the PhoneRecap pages. Run from the repo root, see CLAUDE.md.",
+  "scripts": {
+    "legal-sync": "node legal-sync.js",
+    "legal-pages": "node legal-pages.js",
+    "phonerecap-pages": "node phonerecap-pages.js"
+  },
+  "dependencies": {
+    "playwright-core": "^1.64.0"
+  }
+}

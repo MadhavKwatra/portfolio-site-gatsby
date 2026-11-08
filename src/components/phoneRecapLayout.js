@@ -201,7 +201,7 @@ const Logo = () => (
   </svg>
 );
 
-const PhoneRecapLayout = ({ children, links, joinHref = '#join', joinLabel = 'Join the test' }) => (
+const PhoneRecapLayout = ({ children, links, joinHref = '#get', joinLabel = 'Get the app' }) => (
   <div id="root">
     <ThemeProvider theme={theme}>
       <GlobalStyle />
