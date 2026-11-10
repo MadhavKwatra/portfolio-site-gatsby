@@ -3,6 +3,7 @@ date: '0'
 title: 'PhoneRecap'
 cover: './phonerecap.jpg'
 external: '/phonerecap/'
+android: 'https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap&referrer=utm_source%3Dportfolio%26utm_medium%3Dweb%26utm_campaign%3Dhome-card'
 tech:
   - React Native
   - Expo

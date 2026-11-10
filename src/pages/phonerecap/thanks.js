@@ -67,9 +67,9 @@ export default PhoneRecapThanksPage;
 // eslint-disable-next-line react/prop-types
 export const Head = ({ location }) => (
   <Seo
-    title="Thanks for joining the PhoneRecap test"
-    description="You are on the PhoneRecap tester list. Here is what happens next."
-    image="/phonerecap-og.jpg"
+    title="Thanks! The PhoneRecap test is done"
+    description="The PhoneRecap test is over. PhoneRecap is now on Google Play."
+    image="/phonerecap-og-v2.jpg"
     pathname={location.pathname}
     noindex
   />

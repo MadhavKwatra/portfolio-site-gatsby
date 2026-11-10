@@ -322,6 +322,12 @@ const StyledHero = styled.section`
       max-width: 400px;
       margin: 0 auto;
     }
+    /* One column: status chip and Play badge stacked and centred (owner, 2026-11-10) */
+    .acts {
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 30px;
+    }
   }
 `;
 
@@ -509,6 +515,12 @@ const StyledJoin = styled.section`
 
   .get {
     margin: 22px 0 8px;
+
+    /* Phones: Play badge centred in the box (owner, 2026-11-10) */
+    @media (max-width: 600px) {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .play-badge {
@@ -774,7 +786,7 @@ const appSchema = {
   url: 'https://madhavkwatra.in/phonerecap/',
   installUrl: PLAY_URL,
   downloadUrl: 'https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap',
-  image: 'https://madhavkwatra.in/phonerecap-og.jpg',
+  image: 'https://madhavkwatra.in/phonerecap-og-v2.jpg',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -792,7 +804,7 @@ export const Head = ({ location }) => (
   <Seo
     title="PhoneRecap — your phone year, told as a story"
     description={ONE_LINER}
-    image="/phonerecap-og.jpg"
+    image="/phonerecap-og-v2.jpg"
     pathname={location.pathname}
     schema={appSchema}
   />
