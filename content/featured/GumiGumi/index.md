@@ -3,6 +3,7 @@ date: '1'
 title: 'GumiGumi'
 cover: './gumigumi.png'
 external: '/gumigumi/'
+android: 'https://play.google.com/store/apps/details?id=com.madhavKwatra.gumiGumiApp'
 tech:
   - React Native
   - Expo
