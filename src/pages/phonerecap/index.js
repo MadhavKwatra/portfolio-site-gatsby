@@ -774,7 +774,7 @@ const appSchema = {
   url: 'https://madhavkwatra.in/phonerecap/',
   installUrl: PLAY_URL,
   downloadUrl: 'https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap',
-  image: 'https://madhavkwatra.in/phonerecap-og.jpg',
+  image: 'https://madhavkwatra.in/phonerecap-og-v2.jpg',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -792,7 +792,7 @@ export const Head = ({ location }) => (
   <Seo
     title="PhoneRecap — your phone year, told as a story"
     description={ONE_LINER}
-    image="/phonerecap-og.jpg"
+    image="/phonerecap-og-v2.jpg"
     pathname={location.pathname}
     schema={appSchema}
   />

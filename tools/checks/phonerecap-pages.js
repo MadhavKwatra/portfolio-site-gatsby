@@ -108,6 +108,22 @@ const check = (ok, label) => {
         check(play.n > 0 && play.ok, `${tag}: Google Play badge links ${JSON.stringify(play)}`);
         check(play.forms === 0, `${tag}: no forms (tester form removed)`);
 
+        // Link preview + tab title: the launch image (v2, "Now on Google Play"), no tester-era words.
+        const meta = await page.evaluate(() => ({
+          title: document.title,
+          og: document.querySelector('meta[property="og:image"]')?.content || '',
+          tw: document.querySelector('meta[name="twitter:image"]')?.content || '',
+          desc: document.querySelector('meta[name="description"]')?.content || '',
+        }));
+        check(
+          meta.og.endsWith('/phonerecap-og-v2.jpg') && meta.tw === meta.og,
+          `${tag}: og/twitter image = phonerecap-og-v2.jpg (${meta.og})`,
+        );
+        check(
+          !/joining the|tester list|join the (android )?test/i.test(`${meta.title} ${meta.desc}`),
+          `${tag}: title/description not tester-era (${meta.title})`,
+        );
+
         await page.screenshot({
           path: path.join(shotDir, `phonerecap-${p.name}-${w}-js${js ? 'on' : 'off'}.png`),
           fullPage: true,
