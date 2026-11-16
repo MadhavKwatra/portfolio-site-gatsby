@@ -21,6 +21,64 @@ module.exports = {
     },
     `gatsby-plugin-robots-txt`,
     {
+      // /rss.xml: the blog's posts. dev.to / Hashnode can import from it (they set the
+      // canonical link back to this site).
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) =>
+              allMarkdownRemark.nodes.map(node => {
+                const url = `${site.siteMetadata.siteUrl}${node.frontmatter.slug}`;
+                return {
+                  title: node.frontmatter.title,
+                  description: node.frontmatter.description || node.excerpt,
+                  date: node.frontmatter.date,
+                  url,
+                  guid: url,
+                  categories: node.frontmatter.tags || [],
+                  custom_elements: [{ 'content:encoded': node.html }],
+                };
+              }),
+            query: `
+              {
+                allMarkdownRemark(
+                  filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { draft: { ne: true } } }
+                  sort: { frontmatter: { date: DESC } }
+                ) {
+                  nodes {
+                    excerpt
+                    html
+                    frontmatter {
+                      title
+                      description
+                      date
+                      slug
+                      tags
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Madhav Kwatra · Blog',
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Madhav Kwatra',

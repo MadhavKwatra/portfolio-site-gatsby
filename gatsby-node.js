@@ -25,8 +25,48 @@ exports.createSchemaCustomization = ({ actions }) => {
       android: String
       company: String
       showInProjects: Boolean
+      description: String
+      slug: String
+      tags: [String]
+      cover: File @fileByRelativePath
+      coverAlt: String
+      draft: Boolean
     }
   `);
+};
+
+// Blog posts: content/posts/<folder>/index.md → a page at frontmatter.slug (/blog/<name>/).
+// Posts with `draft: true` are not built (and not in the list, sitemap or RSS).
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const result = await graphql(`
+    {
+      posts: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/content/posts/" }
+          frontmatter: { draft: { ne: true } }
+        }
+      ) {
+        nodes {
+          id
+          frontmatter {
+            slug
+          }
+        }
+      }
+    }
+  `);
+  if (result.errors) {
+    reporter.panicOnBuild('Error while loading blog posts', result.errors);
+    return;
+  }
+  const template = path.resolve('src/templates/post.js');
+  result.data.posts.nodes.forEach(({ id, frontmatter }) => {
+    if (!frontmatter.slug) {
+      reporter.panicOnBuild(`Blog post ${id} has no slug`);
+      return;
+    }
+    actions.createPage({ path: frontmatter.slug, component: template, context: { id } });
+  });
 };
 
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig

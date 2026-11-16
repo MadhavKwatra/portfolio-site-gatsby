@@ -13,6 +13,8 @@ const Seo = ({
   pathname = '/',
   schema = null,
   noindex = false,
+  type = 'website',
+  children = null,
 }) => {
   const { site } = useStaticQuery(graphql`
     query {
@@ -69,7 +71,7 @@ const Seo = ({
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={twitterUsername} />
@@ -90,6 +92,7 @@ const Seo = ({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       )}
+      {children}
     </>
   );
 };
@@ -103,4 +106,6 @@ Seo.propTypes = {
   pathname: PropTypes.string,
   schema: PropTypes.object,
   noindex: PropTypes.bool,
+  type: PropTypes.string,
+  children: PropTypes.node,
 };
