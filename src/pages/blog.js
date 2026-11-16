@@ -6,73 +6,136 @@ import { Layout, Seo } from '@components';
 
 // /blog/: every published post (content/posts/*/index.md without `draft: true`), newest first.
 
+// The global <main> keeps its side padding; the list sits in a centred 1000px column.
 const StyledMain = styled.main`
-  max-width: 900px;
-  margin: 0 auto;
+  .wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
   header {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .empty {
+    color: var(--light-slate);
+    font-size: var(--fz-lg);
   }
 `;
 
-const StyledList = styled.ul`
+// An index, not cards: date on the left (like Experience), title + summary, the cover as a wide strip.
+const StyledList = styled.ol`
   ${({ theme }) => theme.mixins.resetList};
-  display: grid;
-  gap: 24px;
+  border-top: 1px solid var(--lightest-navy);
   margin-bottom: 100px;
 `;
 
-const StyledPost = styled.li`
-  a.card {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 24px;
-    padding: 20px;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition);
+const StyledRow = styled.li`
+  border-bottom: 1px solid var(--lightest-navy);
 
-    &:hover,
-    &:focus-visible {
-      transform: translateY(-4px);
-      h2 {
-        color: var(--green);
-      }
+  a {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) minmax(0, 300px);
+    grid-template-areas: 'date text cover';
+    gap: 32px;
+    align-items: start;
+    padding: 36px 0;
+    color: inherit;
+    text-decoration: none;
+
+    @media (max-width: 900px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 260px);
+      grid-template-areas:
+        'date date'
+        'text cover';
+      gap: 12px 28px;
     }
 
     @media (max-width: 600px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        'cover'
+        'date'
+        'text';
+      gap: 14px;
+      padding: 28px 0;
+    }
+
+    &:hover h2,
+    &:focus-visible h2 {
+      color: var(--green);
+    }
+
+    &:focus-visible {
+      outline: 2px dashed var(--green);
+      outline-offset: 6px;
     }
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    display: block;
+  time {
+    grid-area: date;
+    padding-top: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    color: var(--green);
+    white-space: nowrap;
+
+    @media (max-width: 900px) {
+      padding-top: 0;
+    }
+  }
+
+  .text {
+    grid-area: text;
+    min-width: 0;
   }
 
   h2 {
-    margin: 0 0 8px;
-    font-size: var(--fz-xxl);
+    margin: 0 0 12px;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.25;
     color: var(--lightest-slate);
-    transition: var(--transition);
-  }
-
-  .meta {
-    font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-    color: var(--green);
-    margin-bottom: 10px;
+    transition: color 0.2s ease;
   }
 
   p {
     margin: 0;
+    max-width: 60ch;
     color: var(--light-slate);
-    font-size: var(--fz-md);
-    line-height: 1.5;
+    font-size: var(--fz-lg);
+    line-height: 1.55;
+
+    @media (max-width: 600px) {
+      font-size: var(--fz-md);
+    }
+  }
+
+  .read {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
+    color: var(--slate);
+  }
+
+  .cover {
+    grid-area: cover;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1600 / 672;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    h2 {
+      transition: none;
+    }
   }
 `;
 
@@ -85,41 +148,41 @@ const BlogPage = ({ location, data }) => {
   return (
     <Layout location={location}>
       <StyledMain>
-        <header>
-          <h1 className="big-heading">Blog</h1>
-          <p className="subtitle">What I learn while building my apps and side projects</p>
-        </header>
+        <div className="wrap">
+          <header>
+            <h1 className="big-heading">Blog</h1>
+            <p className="subtitle">Notes from building my apps: what broke, and what I learned.</p>
+          </header>
 
-        {posts.length === 0 ? (
-          <p>No posts yet.</p>
-        ) : (
-          <StyledList>
-            {posts.map(({ id, timeToRead, frontmatter }) => (
-              <StyledPost key={id}>
-                <Link className="card" to={frontmatter.slug}>
-                  {frontmatter.cover && frontmatter.cover.publicURL ? (
-                    <img
-                      src={frontmatter.cover.publicURL}
-                      alt=""
-                      width="1600"
-                      height="672"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span />
-                  )}
-                  <div>
-                    <h2>{frontmatter.title}</h2>
-                    <div className="meta">
-                      {formatDate(frontmatter.date)} · {timeToRead} min read
+          {posts.length === 0 ? (
+            <p className="empty">The first post is on its way.</p>
+          ) : (
+            <StyledList>
+              {posts.map(({ id, timeToRead, frontmatter }) => (
+                <StyledRow key={id}>
+                  <Link to={frontmatter.slug}>
+                    <time dateTime={frontmatter.date}>{formatDate(frontmatter.date)}</time>
+                    <div className="text">
+                      <h2>{frontmatter.title}</h2>
+                      <p>{frontmatter.description}</p>
+                      <span className="read">{timeToRead} min read</span>
                     </div>
-                    <p>{frontmatter.description}</p>
-                  </div>
-                </Link>
-              </StyledPost>
-            ))}
-          </StyledList>
-        )}
+                    {frontmatter.cover && frontmatter.cover.publicURL && (
+                      <img
+                        className="cover"
+                        src={frontmatter.cover.publicURL}
+                        alt={frontmatter.coverAlt || frontmatter.title}
+                        width="1600"
+                        height="672"
+                        loading="lazy"
+                      />
+                    )}
+                  </Link>
+                </StyledRow>
+              ))}
+            </StyledList>
+          )}
+        </div>
       </StyledMain>
     </Layout>
   );
@@ -159,6 +222,7 @@ export const pageQuery = graphql`
           description
           date
           slug
+          coverAlt
           cover {
             publicURL
           }

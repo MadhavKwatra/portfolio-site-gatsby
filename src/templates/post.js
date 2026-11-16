@@ -6,23 +6,32 @@ import { Layout, Seo } from '@components';
 
 // One blog post (content/posts/<folder>/index.md). Pages are made in gatsby-node.js.
 
+// The global <main> keeps its side padding; the article sits in one centred column (~68 characters).
 const StyledPostContainer = styled.main`
-  max-width: 760px;
-  margin: 0 auto;
+  .post {
+    max-width: 720px;
+    margin: 0 auto;
+  }
 `;
 
 const StyledPostHeader = styled.header`
   margin-bottom: 40px;
 
   h1 {
+    margin: 0;
+    font-size: clamp(30px, 5.2vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--lightest-slate);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .subtitle {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 14px;
-    margin-top: 16px;
+    gap: 6px 20px;
+    margin: 18px 0 0;
   }
 
   .tags {
@@ -30,7 +39,7 @@ const StyledPostHeader = styled.header`
   }
 
   .cover {
-    margin-top: 30px;
+    margin-top: 36px;
     border-radius: var(--border-radius);
     width: 100%;
     height: auto;
@@ -42,20 +51,31 @@ const StyledPostContent = styled.div`
   margin-bottom: 60px;
   font-size: var(--fz-lg);
 
+  @media (max-width: 480px) {
+    font-size: 17px;
+  }
+
   h2,
   h3,
   h4 {
-    margin: 2em 0 0.8em;
+    margin: 2.2em 0 0.7em;
+    color: var(--lightest-slate);
+    line-height: 1.25;
   }
 
   h2 {
-    font-size: clamp(24px, 5vw, var(--fz-heading));
+    font-size: clamp(22px, 3.4vw, 28px);
   }
 
   p,
   li {
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--light-slate);
+  }
+
+  strong {
+    color: var(--lightest-slate);
+    font-weight: 600;
   }
 
   p {
@@ -88,6 +108,8 @@ const StyledPostContent = styled.div`
     border-collapse: collapse;
     margin: 1.5em 0;
     font-size: var(--fz-md);
+    display: block;
+    overflow-x: auto;
 
     th,
     td {
@@ -113,6 +135,11 @@ const StyledPostContent = styled.div`
     border-radius: var(--border-radius);
     font-size: var(--fz-sm);
     padding: 0.2em 0.4em;
+  }
+
+  pre,
+  pre[class*='language-'] {
+    padding: 1.1em 1.25em;
   }
 
   pre {
@@ -149,40 +176,42 @@ const PostTemplate = ({ data, location }) => {
   return (
     <Layout location={location}>
       <StyledPostContainer>
-        <span className="breadcrumb">
-          <span className="arrow">&larr;</span>
-          <Link to="/blog/">All posts</Link>
-        </span>
+        <article className="post">
+          <span className="breadcrumb">
+            <span className="arrow">&larr;</span>
+            <Link to="/blog/">All posts</Link>
+          </span>
 
-        <StyledPostHeader>
-          <h1 className="medium-heading">{title}</h1>
-          <p className="subtitle">
-            <time dateTime={date}>{formatDate(date)}</time>
-            <span>{timeToRead} min read</span>
-            {tags && tags.length > 0 && (
-              <span className="tags">{tags.map(t => `#${t}`).join(' ')}</span>
+          <StyledPostHeader>
+            <h1>{title}</h1>
+            <p className="subtitle">
+              <time dateTime={date}>{formatDate(date)}</time>
+              <span>{timeToRead} min read</span>
+              {tags && tags.length > 0 && (
+                <span className="tags">{tags.map(t => `#${t}`).join(' ')}</span>
+              )}
+            </p>
+            {cover && cover.publicURL && (
+              <img
+                className="cover"
+                src={cover.publicURL}
+                alt={coverAlt || title}
+                width="1600"
+                height="672"
+              />
             )}
-          </p>
-          {cover && cover.publicURL && (
-            <img
-              className="cover"
-              src={cover.publicURL}
-              alt={coverAlt || ''}
-              width="1600"
-              height="672"
-            />
-          )}
-        </StyledPostHeader>
+          </StyledPostHeader>
 
-        <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
+          <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
 
-        <StyledFooter>
-          Thanks for reading. Questions or ideas? Write to me on{' '}
-          <a href="https://www.linkedin.com/in/madhav-kwatra/" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>{' '}
-          or <a href="/#contact">say hello</a>. More posts on the <Link to="/blog/">blog</Link>.
-        </StyledFooter>
+          <StyledFooter>
+            Thanks for reading. Questions or ideas? Write to me on{' '}
+            <a href="https://www.linkedin.com/in/madhav-kwatra/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>{' '}
+            or <a href="/#contact">say hello</a>. More posts on the <Link to="/blog/">blog</Link>.
+          </StyledFooter>
+        </article>
       </StyledPostContainer>
     </Layout>
   );
