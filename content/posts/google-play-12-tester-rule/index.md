@@ -1,7 +1,7 @@
 ---
 title: "How I got my Android app through Google Play's 12-tester rule as a solo developer"
 description: 'Google Play wants 12 testers for 14 days before a new solo developer can publish. Where my testers came from, what testers found, and my checklist.'
-date: '2026-11-17'
+date: '2026-11-24'
 slug: '/blog/google-play-12-tester-rule/'
 tags:
   - android
@@ -9,7 +9,7 @@ tags:
   - indiedev
 cover: './cover.jpg'
 coverAlt: 'The 12-tester rule: what new solo developers must do before their app can go live'
-draft: false
+draft: true
 ---
 
 If you made your Google Play developer account after November 2023 as a person (not a company), you can't just
@@ -77,6 +77,13 @@ bugs I couldn't:
 
 I shipped **3 updates during the test**. That also gave me real answers for the production form.
 
+## AI did a lot of the heavy lifting
+
+I'm a solo developer, so I leaned on AI (artificial intelligence) coding assistants, **Claude Code** and **Codex**, the whole way: drafting
+the tester posts and messages, writing the store listing and the answers for the production form, and fixing the
+bugs testers reported quickly, each fix with a test. They saved me days. I still read every word before it went
+out and tested every fix on real phones, because they can be confidently wrong.
+
 ## The production form
 
 When the 14 days are done, Play asks things like:
@@ -102,7 +109,8 @@ added a line whenever a tester reported something. Be specific: name the bugs an
 6. Check the tester count every day for the first week.
 7. Ship at least one update with tester fixes.
 8. Keep a notes file for the production form.
-9. Apply on day 14+; Google replies by email.
+9. Use an AI assistant for drafts and fixes, and check everything it gives you.
+10. Apply on day 14+; Google replies by email.
 
 ## How it ended
 
@@ -113,7 +121,8 @@ countries.
 
 PhoneRecap turns your Android phone usage into a short year-in-review story (total hours, top apps, your busiest
 month, a "phone personality") with monthly recaps and home-screen widgets. It has **no internet permission at all**,
-so nothing leaves your phone. I'll write about the Android side of it next.
+so nothing leaves your phone. If you're curious how the app works with Android's usage data, I wrote about that here:
+[How Android stores your screen time](/blog/how-android-stores-screen-time/).
 
 Free, Android 10+: [PhoneRecap on Google Play](https://play.google.com/store/apps/details?id=com.madhavkwatra.phonerecap&referrer=utm_source%3Dblog%26utm_campaign%3Darticle1)
 

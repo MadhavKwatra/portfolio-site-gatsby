@@ -1,7 +1,7 @@
 ---
 title: 'How Android stores your screen time (and how a battery replacement erased mine, twice)'
 description: 'Android keeps app-by-app detail for about 10 days and totals for months. A battery repair can wipe it all. What I learned building PhoneRecap.'
-date: '2026-11-24'
+date: '2026-11-17'
 slug: '/blog/how-android-stores-screen-time/'
 tags:
   - android
@@ -9,7 +9,7 @@ tags:
   - privacy
 cover: './cover.jpg'
 coverAlt: 'Your phone forgets: how long Android keeps your screen time, and why a battery repair can erase it'
-draft: true
+draft: false
 ---
 
 I built PhoneRecap, an Android app that turns your phone usage into a year-in-review story: total hours, top apps,
@@ -72,7 +72,7 @@ totals since 26 June. Only the ~1.5 days it hadn't saved yet were lost, because 
 
 ## 3. Why: the phone's clock
 
-![Three steps: the battery comes out, the phone's clock resets to an old date, and Android deletes the history because it looks like it is from the future](images/memory-3-wide.jpg)
+![Two phones: with the battery in, the clock chip keeps time; with the battery out, the clock forgets, and Android then treats your history as from the future and deletes it](images/memory-3-wide.jpg)
 
 A phone keeps time with an **RTC (real-time clock)**: a tiny circuit that keeps counting even when the phone is off.
 It sits in the phone's power chip and runs on the **main battery**. Take the battery out for a repair, and the RTC
@@ -86,6 +86,8 @@ Android's usage database doesn't like that. At startup it **deletes files that l
 future** (it's in the AOSP code), and with the clock in the past, everything you recorded looks like it's from the
 future. A power cut that corrupts the database's own files can also make Android wipe it and start over. Which one
 hit my phone can't be proven without system logs (my phone's maker turns them off); the result was the same.
+I found this rule by going through the AOSP code with Claude Code, an AI coding assistant: it read the
+relevant Android source files with me and pointed at the "future files" check.
 
 Computers have the same weak spot. A PC keeps its clock and BIOS (basic input/output system) settings alive with a
 small coin battery, the CMOS (complementary metal-oxide-semiconductor) battery. On my old PC, a 3 GB RAM (random-access
@@ -93,6 +95,8 @@ memory) AMD Athlon machine, the date reset on every start and I typed it in by h
 the date kept falling back to around 2022 and the RAM dropped from 3200 to about 2666 MHz (megahertz), because its speed
 profile lives in the same memory. A new coin battery fixed it. A phone has no separate coin battery, so **every
 battery replacement is that moment**.
+
+![A PC motherboard with its small coin battery, which keeps the clock and settings; when it dies, the date and settings like RAM speed reset](images/memory-5-wide.jpg)
 
 ## 4. What I built because of it
 
