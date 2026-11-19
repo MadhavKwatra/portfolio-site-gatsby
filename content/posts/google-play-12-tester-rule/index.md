@@ -1,7 +1,7 @@
 ---
 title: "How I got my Android app through Google Play's 12-tester rule as a solo developer"
 description: 'Google Play wants 12 testers for 14 days before a new solo developer can publish. Where my testers came from, what testers found, and my checklist.'
-date: '2026-11-24'
+date: '2026-12-03'
 slug: '/blog/google-play-12-tester-rule/'
 tags:
   - android
