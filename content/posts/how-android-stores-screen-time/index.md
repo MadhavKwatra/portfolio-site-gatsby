@@ -1,7 +1,7 @@
 ---
 title: 'How Android stores your screen time (and how a battery replacement erased mine, twice)'
 description: 'Android keeps app-by-app detail for about 10 days and totals for months. A battery repair can wipe it all. What I learned building PhoneRecap.'
-date: '2026-11-23'
+date: '2026-11-20'
 slug: '/blog/how-android-stores-screen-time/'
 tags:
   - android
