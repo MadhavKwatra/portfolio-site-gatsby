@@ -1,5 +1,6 @@
 ---
 date: '3'
+showInFeatured: false
 title: 'Mini URL'
 cover: './demo.png'
 github: 'https://github.com/MadhavKwatra/mini-url-ui'

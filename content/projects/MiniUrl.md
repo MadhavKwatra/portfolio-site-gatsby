@@ -8,7 +8,7 @@ tech:
   - Express
   - MongoDB
 company: 'Personal'
-showInProjects: false
+showInProjects: true
 ---
 
-A URL shortener with link analytics. Shown in Featured; listed here for the archive.
+A URL shortener like bit.ly: short links, one-click copy, and analytics for each link. Sign-up with email verification, a dashboard of your links, and a responsive layout.

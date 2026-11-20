@@ -6,7 +6,7 @@ tech:
   - React Native
   - Expo Router
 company: 'Personal'
-showInProjects: false
+showInProjects: true
 ---
 
-A React Native app inspired by the Sorting Hat from Harry Potter. Shown in Featured; listed here for the archive.
+A React Native app inspired by the Sorting Hat from Harry Potter: tap Sort to get a house, decorate your photo with stickers, and switch house names between English and Hinglish.
