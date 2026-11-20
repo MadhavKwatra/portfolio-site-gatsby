@@ -93,7 +93,7 @@ module.exports = {
     },
     {
       name: 'Blog',
-      url: '/blog/',
+      url: '/#writing',
     },
     {
       name: 'Contact',

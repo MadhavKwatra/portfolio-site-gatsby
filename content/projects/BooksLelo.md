@@ -7,7 +7,7 @@ tech:
   - MySQL
   - AWS
 company: 'GGDSD College'
-showInProjects: false
+showInProjects: true
 ---
 
-A marketplace for used textbooks, built as my BCA final-year project. Shown in Featured; listed here for the archive.
+A full-stack web app where people sell their used textbooks, like OLX but just for books. My final-semester project for my bachelor's degree.

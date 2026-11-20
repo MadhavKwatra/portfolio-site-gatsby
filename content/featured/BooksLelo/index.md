@@ -1,5 +1,6 @@
 ---
 date: '4'
+showInFeatured: false
 title: 'BooksLelo'
 cover: './bookslelo.png'
 github: 'https://github.com/MadhavKwatra/BooksLelo-Project'
