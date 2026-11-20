@@ -1,6 +1,6 @@
 # PhoneRecap — Privacy Policy
 
-_Last updated: 17 October 2026_
+_Last updated: 13 November 2026_
 
 PhoneRecap is an Android app made by Madhav Kwatra, an independent developer in India. It shows you a recap of how you use your phone. This policy explains what the app reads, where that data goes, and your choices.
 
@@ -30,6 +30,17 @@ PhoneRecap does **not** read your messages, photos, contacts, location, browsing
 
 Everything is stored in a small database inside the app on your phone. PhoneRecap saves a little each day because Android deletes detailed usage after about 10 days (and data use after about 3 months). Android's automatic Google backup is turned off for PhoneRecap, so this data is not copied to your Google account.
 
+## Daily goal, check-in and widgets
+
+These are optional. They use only the data listed above, and they stay on your phone like the rest:
+
+- **daily goal** — if you set one (on Home or in Settings › Daily goal), PhoneRecap saves the goal and the day it starts;
+- **notes near your goal** — if you turn them on, PhoneRecap counts today's time in apps on your phone about every 15 minutes and shows a note at 80 % of your goal and one when you reach it; the notes show only the time left and your goal, never app names;
+- **evening check-in** — if you turn it on, a note around 9 PM asks "Was today worth it?"; your answer (Yes, Meh or No) is saved on your phone with the day, and only you see it;
+- **home-screen widgets** — if you add one, it shows today's time in apps, your streak and, unless you turn on Hide app names, the names and icons of your top 3 apps; your home screen is easy for others to see, and the widget counts on your phone and sends nothing.
+
+Settings › Delete PhoneRecap's data deletes your goal and your answers too, and turns the notes near your goal and the evening check-in off.
+
 ## How the data is protected
 
 - Android keeps PhoneRecap's database in the app's private storage. Other apps cannot read it.
@@ -46,7 +57,7 @@ PhoneRecap never shares your data. You can choose to:
 
 - **share a recap image** through Android's share sheet — it goes only where you send it;
 - **save a recap image** to your phone's gallery (Pictures › PhoneRecap) — only when you tap Save; it stays on your phone, and PhoneRecap needs no photo or storage permission for this;
-- **get recap reminders** — if you turn them on in Settings, PhoneRecap asks Android for notification permission and schedules up to two reminders a month on your phone ("your month is ready", and on 1 December "your year is ready"); nothing is sent to us or anyone else, and you can turn them off any time;
+- **get recap reminders** — if you turn them on in Settings, PhoneRecap asks Android for notification permission and schedules up to two reminders a month on your phone ("your month is ready", and on 1 December "your year is ready"); if your phone removed the 1 December reminder and you did not open the app, it can come late, once, within a week; nothing is sent to us or anyone else, and you can turn them off any time;
 - **get a saving alert** — if you turn on "Saving alerts" in Settings, PhoneRecap schedules one local notification for 6 days after its last save, so you hear about it if your phone stopped it from saving; each new save moves it forward, so you only see it when saving really stopped; it contains no usage numbers or app names;
 - **export your data** as a file — it goes only where you save or send it; "Save export to phone" puts it in your phone's Download › PhoneRecap folder, where it stays until you delete it, also if you uninstall PhoneRecap;
 - **import an export** — Settings › Your data › Import from a file reads only the file you pick, on your phone, and adds its saved days to PhoneRecap; nothing is uploaded;
